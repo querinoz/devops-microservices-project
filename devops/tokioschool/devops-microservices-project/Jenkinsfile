@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+    
+    environment {
+        DOCKER_IMAGE_A = "service-a:${env.BUILD_ID}"
+        DOCKER_IMAGE_B = "service-b:${env.BUILD_ID}"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('DEV - Testing') {
+            steps {
+                sh '''
+                python3 -m venv venv
+                . venv/bin/activate
+                pip install -r microservices/service-a/requirements.txt
+                pytest microservices/service-a/test_app.py
+                '''
+            }
+        }
+
+        stage('STG - Build & Orchestrate') {
+            steps {
+                // Building images locally to verify orchestration works
+                sh 'docker-compose build'
+                sh 'docker-compose up -d'
+            }
+        }
+
+        stage('PRD - Deployment') {
+            when {
+                branch 'main'
+            }
+            steps {
+                echo "Deploying to Production Environment..."
+                // In a senior project, you might push to a registry here
+                sh 'docker-compose up -d --force-recreate'
+            }
+        }
+    }
+    
+    post {
+        always {
+            echo "Cleaning up workspace..."
+        }
+    }
+}
