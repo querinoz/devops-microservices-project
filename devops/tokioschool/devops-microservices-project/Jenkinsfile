@@ -6,27 +6,25 @@ pipeline {
         DOCKER_IMAGE_B = "service-b:${env.BUILD_ID}"
     }
 
-    stages {
-        stage('DEV - Testing') {
-            // REMOVEMOS O BLOCO 'agent { docker ... }'
-            // Agora roda direto no container do Jenkins onde instalamos o Python
+    stage('DEV - Testing') {
             steps {
-                sh '''
-                # Garante permissão de execução
-                chmod +x ./run-tests.sh
-                
-                # Executa o script de testes
-                ./run-tests.sh
-                '''
+                // Entra na pasta onde o projeto realmente está
+                dir('devops/tokioschool/devops-microservices-project') {
+                    sh '''
+                    chmod +x run-tests.sh
+                    ./run-tests.sh
+                    '''
+                }
             }
-        }
+        
 
         stage('STG - Build & Orchestrate') {
             steps {
-                script {
-                    // O comando docker já está funcionando, então isso vai passar
-                    sh 'docker compose build'
-                    sh 'docker compose up -d'
+                dir('devops/tokioschool/devops-microservices-project') {
+                    script {
+                        sh 'docker compose build'
+                        sh 'docker compose up -d'
+                    }
                 }
             }
         }
