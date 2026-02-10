@@ -7,22 +7,15 @@ pipeline {
     }
 
     stages {
-        // Removido o estágio de Checkout manual, pois o Jenkins Declarative já faz isso automaticamente.
-
         stage('DEV - Testing') {
-            agent {
-                // Isso resolve o erro "python3 not found" instalando o Python dinamicamente via Docker
-                docker { 
-                    image 'python:3.10-slim'
-                    args '-u root' 
-                }
-            }
+            // REMOVEMOS O BLOCO 'agent { docker ... }'
+            // Agora roda direto no container do Jenkins onde instalamos o Python
             steps {
                 sh '''
-                # Garante que o script de testes tenha permissão
+                # Garante permissão de execução
                 chmod +x ./run-tests.sh
                 
-                # Executa o seu script que já corrigimos antes (com pip install e venv)
+                # Executa o script de testes
                 ./run-tests.sh
                 '''
             }
@@ -30,10 +23,10 @@ pipeline {
 
         stage('STG - Build & Orchestrate') {
             steps {
-                // Aqui voltamos para o agent principal para usar o Docker do host
                 script {
-                    sh 'docker-compose build'
-                    sh 'docker-compose up -d'
+                    // O comando docker já está funcionando, então isso vai passar
+                    sh 'docker compose build'
+                    sh 'docker compose up -d'
                 }
             }
         }
@@ -44,7 +37,7 @@ pipeline {
             }
             steps {
                 echo "Deploying to Production Environment..."
-                sh 'docker-compose up -d --force-recreate'
+                sh 'docker compose up -d --force-recreate'
             }
         }
     }
@@ -52,8 +45,6 @@ pipeline {
     post {
         always {
             echo "Cleaning up workspace..."
-            // Opcional: Para o docker-compose para não deixar containers rodando no servidor Jenkins
-            // sh 'docker-compose down'
         }
     }
 }
