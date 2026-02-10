@@ -46,15 +46,15 @@ pipeline {
                     script {
                         echo "Iniciando Deploy final e Verificação de Saúde..."
                         
-                        // Tempo para o Gunicorn estabilizar dentro do container
+                        // Tempo para o Gunicorn (Python) terminar de subir
                         sh 'sleep 15' 
                         
                         echo "Validando Service A..."
-                        // Executa o curl de dentro do container do Service A
+                        // O comando roda DENTRO do container service-a
                         sh 'docker compose exec -T service-a curl -f http://localhost:8001/health'
                         
                         echo "Validando Service B..."
-                        // Executa o curl de dentro do container do Service B
+                        // O comando roda DENTRO do container service-b
                         sh 'docker compose exec -T service-b curl -f http://localhost:8002/health'
                         
                         echo "Deploy realizado com sucesso em Produção!"
