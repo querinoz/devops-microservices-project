@@ -6,3 +6,4 @@ flask-opentracing
 requests
 pytest
 pytest-cov
+gunicorn
