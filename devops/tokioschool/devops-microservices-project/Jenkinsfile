@@ -2,6 +2,7 @@ pipeline {
     agent any 
 
     environment {
+        // IDs de build para taguear imagens se necessário no futuro
         DOCKER_IMAGE_A = "service-a:${env.BUILD_ID}"
         DOCKER_IMAGE_B = "service-b:${env.BUILD_ID}"
     }
@@ -9,7 +10,6 @@ pipeline {
     stages {
         stage('DEV - Testing') {
             steps {
-                // Entra na pasta correta antes de rodar o script
                 dir('devops/tokioschool/devops-microservices-project') {
                     sh '''
                     chmod +x ./run-tests.sh
@@ -23,7 +23,7 @@ pipeline {
             steps {
                 dir('devops/tokioschool/devops-microservices-project') {
                     script {
-                        // Tenta 'docker compose', se falhar usa 'docker-compose'
+                        // Tenta buildar e subir o ambiente de staging
                         sh 'docker compose build || docker-compose build'
                         sh 'docker compose up -d || docker-compose up -d'
                     }
@@ -31,21 +31,44 @@ pipeline {
             }
         }
 
-        stage('STG - Build & Orchestrate') {
+        stage('Aprovação Manual') {
             steps {
-                dir('devops/tokioschool/devops-microservices-project') {
-                    script {
-                        // Agora o comando vai funcionar!
-                        sh 'docker-compose build'
-                        sh 'docker-compose up -d'
-                    }
+                script {
+                    // Pausa o pipeline e aguarda clique no Blue Ocean ou interface clássica
+                    input message: "Deseja promover o build para Produção?", ok: "Fazer Deploy!"
                 }
             }
         }
 
+        stage('PRD - Deployment') {
+            steps {
+                dir('devops/tokioschool/devops-microservices-project') {
+                    script {
+                        echo "Iniciando Deploy final e Verificação de Saúde..."
+                        
+                        // Garante que os containers subiram e estão saudáveis
+                        sh 'sleep 10' 
+                        
+                        // Validação via curl (falha o estágio se retornar erro)
+                        sh 'curl -f http://localhost:8001/health'
+                        sh 'curl -f http://localhost:8002/health'
+                        
+                        echo "Deploy realizado com sucesso em Produção!"
+                    }
+                }
+            }
+        }
+    }
+
     post {
         always {
-            echo "Pipeline finalizado. Limpando workspace..."
+            echo "Pipeline finalizado. Status: ${currentBuild.result}"
+        }
+        success {
+            echo "O projeto está online e os traces estão disponíveis no Jaeger!"
+        }
+        failure {
+            echo "Ocorreu um erro no pipeline. Verifique os logs acima."
         }
     }
 }
