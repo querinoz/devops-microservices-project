@@ -1,29 +1,31 @@
 pipeline {
     agent any 
-    
+
     environment {
         DOCKER_IMAGE_A = "service-a:${env.BUILD_ID}"
         DOCKER_IMAGE_B = "service-b:${env.BUILD_ID}"
     }
 
-    stage('DEV - Testing') {
+    stages {
+        stage('DEV - Testing') {
             steps {
-                // Entra na pasta onde o projeto realmente está
+                // Entra na pasta correta antes de rodar o script
                 dir('devops/tokioschool/devops-microservices-project') {
                     sh '''
-                    chmod +x run-tests.sh
+                    chmod +x ./run-tests.sh
                     ./run-tests.sh
                     '''
                 }
             }
-        
+        }
 
         stage('STG - Build & Orchestrate') {
             steps {
                 dir('devops/tokioschool/devops-microservices-project') {
                     script {
-                        sh 'docker compose build'
-                        sh 'docker compose up -d'
+                        // Tenta 'docker compose', se falhar usa 'docker-compose'
+                        sh 'docker compose build || docker-compose build'
+                        sh 'docker compose up -d || docker-compose up -d'
                     }
                 }
             }
@@ -34,15 +36,17 @@ pipeline {
                 branch 'main'
             }
             steps {
-                echo "Deploying to Production Environment..."
-                sh 'docker compose up -d --force-recreate'
+                dir('devops/tokioschool/devops-microservices-project') {
+                    echo "Deploying to Production Environment..."
+                    sh 'docker compose up -d --force-recreate || docker-compose up -d --force-recreate'
+                }
             }
         }
     }
-    
+
     post {
         always {
-            echo "Cleaning up workspace..."
+            echo "Pipeline finalizado. Limpando workspace..."
         }
     }
 }
