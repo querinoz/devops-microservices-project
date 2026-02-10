@@ -25,12 +25,23 @@ run_service_tests() {
     echo -e "${YELLOW}Testing ${service_name}...${NC}"
     cd "${service_path}"
     
+    # Se não houver venv, cria. Se houver, usa.
     if [ ! -d "venv" ]; then
-        echo -e "${RED}❌ Virtual environment not found. Run setup.sh first!${NC}"
-        exit 1
+        echo -e "${BLUE}Criando ambiente virtual...${NC}"
+        python3 -m venv venv
     fi
     
     source venv/bin/activate
+    
+    # PASSO CRUCIAL: Garante que as dependências (como 'six' e Flask correto) estejam lá
+    echo "Instalando/Atualizando dependências para ${service_name}..."
+    pip install --upgrade pip
+    if [ -f "requirements.txt" ]; then
+        pip install -r requirements.txt
+    else
+        # Caso o arquivo não exista, instala o básico para não quebrar
+        pip install pytest pytest-cov Flask<2.4 Werkzeug<3.0 six
+    fi
     
     echo "Running pytest for ${service_name}..."
     pytest test_app.py -v --cov=app --cov-report=term --cov-report=html --junitxml=test-results.xml
@@ -48,7 +59,6 @@ run_service_tests() {
     
     return $exit_code
 }
-
 # Run Service A tests
 service_a_result=0
 run_service_tests "Service A" "microservices/service-a" || service_a_result=$?

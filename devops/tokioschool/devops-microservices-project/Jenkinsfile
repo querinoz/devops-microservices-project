@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent any 
     
     environment {
         DOCKER_IMAGE_A = "service-a:${env.BUILD_ID}"
@@ -7,28 +7,34 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
+        // Removido o estágio de Checkout manual, pois o Jenkins Declarative já faz isso automaticamente.
 
         stage('DEV - Testing') {
+            agent {
+                // Isso resolve o erro "python3 not found" instalando o Python dinamicamente via Docker
+                docker { 
+                    image 'python:3.10-slim'
+                    args '-u root' 
+                }
+            }
             steps {
                 sh '''
-                python3 -m venv venv
-                . venv/bin/activate
-                pip install -r microservices/service-a/requirements.txt
-                pytest microservices/service-a/test_app.py
+                # Garante que o script de testes tenha permissão
+                chmod +x ./run-tests.sh
+                
+                # Executa o seu script que já corrigimos antes (com pip install e venv)
+                ./run-tests.sh
                 '''
             }
         }
 
         stage('STG - Build & Orchestrate') {
             steps {
-                // Building images locally to verify orchestration works
-                sh 'docker-compose build'
-                sh 'docker-compose up -d'
+                // Aqui voltamos para o agent principal para usar o Docker do host
+                script {
+                    sh 'docker-compose build'
+                    sh 'docker-compose up -d'
+                }
             }
         }
 
@@ -38,7 +44,6 @@ pipeline {
             }
             steps {
                 echo "Deploying to Production Environment..."
-                // In a senior project, you might push to a registry here
                 sh 'docker-compose up -d --force-recreate'
             }
         }
@@ -47,6 +52,8 @@ pipeline {
     post {
         always {
             echo "Cleaning up workspace..."
+            // Opcional: Para o docker-compose para não deixar containers rodando no servidor Jenkins
+            // sh 'docker-compose down'
         }
     }
 }
