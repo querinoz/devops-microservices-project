@@ -31,18 +31,17 @@ pipeline {
             }
         }
 
-        stage('PRD - Deployment') {
-            when {
-                branch 'main'
-            }
+        stage('STG - Build & Orchestrate') {
             steps {
                 dir('devops/tokioschool/devops-microservices-project') {
-                    echo "Deploying to Production Environment..."
-                    sh 'docker compose up -d --force-recreate || docker-compose up -d --force-recreate'
+                    script {
+                        // Agora o comando vai funcionar!
+                        sh 'docker-compose build'
+                        sh 'docker-compose up -d'
+                    }
                 }
             }
         }
-    }
 
     post {
         always {
