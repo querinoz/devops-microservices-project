@@ -2,6 +2,7 @@ Flask<2.4
 Werkzeug<3.0
 jaeger-client
 six
+flask-opentracing
 pytest
 pytest-cov
 flask-cors
