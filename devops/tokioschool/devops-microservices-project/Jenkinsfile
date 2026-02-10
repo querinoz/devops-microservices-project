@@ -46,13 +46,15 @@ pipeline {
                     script {
                         echo "Iniciando Deploy final e Verificação de Saúde..."
                         
-                        sh 'sleep 15' // Tempo para os serviços estabilizarem
+                        // Tempo para o Gunicorn estabilizar dentro do container
+                        sh 'sleep 15' 
                         
-                        // Em vez de curl direto, usamos o docker exec para testar de dentro da rede
                         echo "Validando Service A..."
+                        // Executa o curl de dentro do container do Service A
                         sh 'docker compose exec -T service-a curl -f http://localhost:8001/health'
                         
                         echo "Validando Service B..."
+                        // Executa o curl de dentro do container do Service B
                         sh 'docker compose exec -T service-b curl -f http://localhost:8002/health'
                         
                         echo "Deploy realizado com sucesso em Produção!"
