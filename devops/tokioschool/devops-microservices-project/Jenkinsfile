@@ -46,12 +46,14 @@ pipeline {
                     script {
                         echo "Iniciando Deploy final e Verificação de Saúde..."
                         
-                        // Garante que os containers subiram e estão saudáveis
-                        sh 'sleep 10' 
+                        sh 'sleep 15' // Tempo para os serviços estabilizarem
                         
-                        // Validação via curl (falha o estágio se retornar erro)
-                        sh 'curl -f http://localhost:8001/health'
-                        sh 'curl -f http://localhost:8002/health'
+                        // Em vez de curl direto, usamos o docker exec para testar de dentro da rede
+                        echo "Validando Service A..."
+                        sh 'docker compose exec -T service-a curl -f http://localhost:8001/health'
+                        
+                        echo "Validando Service B..."
+                        sh 'docker compose exec -T service-b curl -f http://localhost:8002/health'
                         
                         echo "Deploy realizado com sucesso em Produção!"
                     }
