@@ -4,3 +4,4 @@ jaeger-client
 six
 pytest
 pytest-cov
+flask-cors
