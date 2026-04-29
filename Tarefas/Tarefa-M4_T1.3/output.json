@@ -1,0 +1,506 @@
+{
+  "name": "9a219980fc1f.home",
+  "environment": "production",
+  "parameters": {
+    "aio_agent_version": "8.9.0",
+    "augeas": {
+      "version": "1.14.1"
+    },
+    "disks": {
+      "sda": {
+        "model": "Virtual Disk",
+        "size": "388.61 MiB",
+        "size_bytes": 407490560,
+        "type": "hdd",
+        "vendor": "Msft"
+      },
+      "sdb": {
+        "model": "Virtual Disk",
+        "size": "186.04 MiB",
+        "size_bytes": 195080192,
+        "type": "hdd",
+        "vendor": "Msft"
+      },
+      "sdc": {
+        "model": "Virtual Disk",
+        "size": "8.00 GiB",
+        "size_bytes": 8589938688,
+        "type": "hdd",
+        "vendor": "Msft"
+      },
+      "sdd": {
+        "model": "Virtual Disk",
+        "size": "1.00 TiB",
+        "size_bytes": 1099511627776,
+        "type": "hdd",
+        "vendor": "Msft"
+      }
+    },
+    "facterversion": "4.9.0",
+    "filesystems": "btrfs,ext2,ext3,ext4,msdos,squashfs,udf,vfat,xfs",
+    "fips_enabled": false,
+    "identity": {
+      "gid": 0,
+      "group": "root",
+      "privileged": true,
+      "uid": 0,
+      "user": "root"
+    },
+    "is_virtual": true,
+    "kernel": "Linux",
+    "kernelmajversion": "6.6",
+    "kernelrelease": "6.6.87.2-microsoft-standard-WSL2",
+    "kernelversion": "6.6.87",
+    "load_averages": {
+      "15m": 1.4,
+      "1m": 1.46,
+      "5m": 1.39
+    },
+    "memory": {
+      "swap": {
+        "available": "8.00 GiB",
+        "available_bytes": 8589934592,
+        "capacity": "0.00%",
+        "total": "8.00 GiB",
+        "total_bytes": 8589934592,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "system": {
+        "available": "24.99 GiB",
+        "available_bytes": 26837647360,
+        "capacity": "19.30%",
+        "total": "30.97 GiB",
+        "total_bytes": 33254731776,
+        "used": "5.98 GiB",
+        "used_bytes": 6417084416
+      }
+    },
+    "mountpoints": {
+      "/": {
+        "available": "936.23 GiB",
+        "available_bytes": 1005266812928,
+        "capacity": "2.03%",
+        "device": "overlay",
+        "filesystem": "overlay",
+        "options": [
+          "rw",
+          "relatime",
+          "lowerdir=/var/lib/docker/overlay2/l/ETR3PTECS2LWHENM3UVENQN7R2:/var/lib/docker/overlay2/l/JM3ZOAFH6YVGM77GX7OUD6MDPN:/var/lib/docker/overlay2/l/P4TKZSRURIW4BD46BS447HYGLB:/var/lib/docker/overlay2/l/E2PX4AMSFIAXZUGSZLR7MEZLV6:/var/lib/docker/overlay2/l/BARJT3M4FPFACYB3XNZZJJZGKX:/var/lib/docker/overlay2/l/EJJP2GFSGKCRGNJ7XG6FFUFB2M:/var/lib/docker/overlay2/l/ZOKFMC5TTIH35EIKD2QAQLO3GR:/var/lib/docker/overlay2/l/XMULUWSY3WBLY2ZLL2SDGWTHQS:/var/lib/docker/overlay2/l/MVRFFQN24VZZMVZNR557VGAHSQ",
+          "upperdir=/var/lib/docker/overlay2/9fe3f2a6d2af4c2cc499c0bf40abe94f658267a80730f087284e117ec97c91c0/diff",
+          "workdir=/var/lib/docker/overlay2/9fe3f2a6d2af4c2cc499c0bf40abe94f658267a80730f087284e117ec97c91c0/work"
+        ],
+        "size": "1006.85 GiB",
+        "size_bytes": 1081101176832,
+        "used": "19.41 GiB",
+        "used_bytes": 20842008576
+      },
+      "/dev": {
+        "available": "64.00 MiB",
+        "available_bytes": 67108864,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "rw",
+          "nosuid",
+          "size=65536k",
+          "mode=755"
+        ],
+        "size": "64.00 MiB",
+        "size_bytes": 67108864,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/dev/console": {
+        "available": "0 bytes",
+        "available_bytes": 0,
+        "capacity": "100%",
+        "device": "devpts",
+        "filesystem": "devpts",
+        "options": [
+          "rw",
+          "nosuid",
+          "noexec",
+          "relatime",
+          "gid=5",
+          "mode=620",
+          "ptmxmode=666"
+        ],
+        "size": "0 bytes",
+        "size_bytes": 0,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/dev/mqueue": {
+        "available": "0 bytes",
+        "available_bytes": 0,
+        "capacity": "100%",
+        "device": "mqueue",
+        "filesystem": "mqueue",
+        "options": [
+          "rw",
+          "nosuid",
+          "nodev",
+          "noexec",
+          "relatime"
+        ],
+        "size": "0 bytes",
+        "size_bytes": 0,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/dev/pts": {
+        "available": "0 bytes",
+        "available_bytes": 0,
+        "capacity": "100%",
+        "device": "devpts",
+        "filesystem": "devpts",
+        "options": [
+          "rw",
+          "nosuid",
+          "noexec",
+          "relatime",
+          "gid=5",
+          "mode=620",
+          "ptmxmode=666"
+        ],
+        "size": "0 bytes",
+        "size_bytes": 0,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/dev/shm": {
+        "available": "64.00 MiB",
+        "available_bytes": 67108864,
+        "capacity": "0%",
+        "device": "shm",
+        "filesystem": "tmpfs",
+        "options": [
+          "rw",
+          "nosuid",
+          "nodev",
+          "noexec",
+          "relatime",
+          "size=65536k"
+        ],
+        "size": "64.00 MiB",
+        "size_bytes": 67108864,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/etc/hostname": {
+        "available": "936.23 GiB",
+        "available_bytes": 1005266812928,
+        "capacity": "2.03%",
+        "device": "/dev/sdd",
+        "filesystem": "ext4",
+        "options": [
+          "rw",
+          "relatime",
+          "discard",
+          "errors=remount-ro",
+          "data=ordered"
+        ],
+        "size": "1006.85 GiB",
+        "size_bytes": 1081101176832,
+        "used": "19.41 GiB",
+        "used_bytes": 20842008576
+      },
+      "/etc/hosts": {
+        "available": "936.23 GiB",
+        "available_bytes": 1005266812928,
+        "capacity": "2.03%",
+        "device": "/dev/sdd",
+        "filesystem": "ext4",
+        "options": [
+          "rw",
+          "relatime",
+          "discard",
+          "errors=remount-ro",
+          "data=ordered"
+        ],
+        "size": "1006.85 GiB",
+        "size_bytes": 1081101176832,
+        "used": "19.41 GiB",
+        "used_bytes": 20842008576
+      },
+      "/etc/resolv.conf": {
+        "available": "936.23 GiB",
+        "available_bytes": 1005266812928,
+        "capacity": "2.03%",
+        "device": "/dev/sdd",
+        "filesystem": "ext4",
+        "options": [
+          "rw",
+          "relatime",
+          "discard",
+          "errors=remount-ro",
+          "data=ordered"
+        ],
+        "size": "1006.85 GiB",
+        "size_bytes": 1081101176832,
+        "used": "19.41 GiB",
+        "used_bytes": 20842008576
+      },
+      "/proc/acpi": {
+        "available": "15.49 GiB",
+        "available_bytes": 16627363840,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "ro",
+          "relatime"
+        ],
+        "size": "15.49 GiB",
+        "size_bytes": 16627363840,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/proc/interrupts": {
+        "available": "64.00 MiB",
+        "available_bytes": 67108864,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "rw",
+          "nosuid",
+          "size=65536k",
+          "mode=755"
+        ],
+        "size": "64.00 MiB",
+        "size_bytes": 67108864,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/proc/kcore": {
+        "available": "64.00 MiB",
+        "available_bytes": 67108864,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "rw",
+          "nosuid",
+          "size=65536k",
+          "mode=755"
+        ],
+        "size": "64.00 MiB",
+        "size_bytes": 67108864,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/proc/keys": {
+        "available": "64.00 MiB",
+        "available_bytes": 67108864,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "rw",
+          "nosuid",
+          "size=65536k",
+          "mode=755"
+        ],
+        "size": "64.00 MiB",
+        "size_bytes": 67108864,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/proc/latency_stats": {
+        "available": "64.00 MiB",
+        "available_bytes": 67108864,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "rw",
+          "nosuid",
+          "size=65536k",
+          "mode=755"
+        ],
+        "size": "64.00 MiB",
+        "size_bytes": 67108864,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/proc/scsi": {
+        "available": "15.49 GiB",
+        "available_bytes": 16627363840,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "ro",
+          "relatime"
+        ],
+        "size": "15.49 GiB",
+        "size_bytes": 16627363840,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/proc/timer_list": {
+        "available": "64.00 MiB",
+        "available_bytes": 67108864,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "rw",
+          "nosuid",
+          "size=65536k",
+          "mode=755"
+        ],
+        "size": "64.00 MiB",
+        "size_bytes": 67108864,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/sys/firmware": {
+        "available": "15.49 GiB",
+        "available_bytes": 16627363840,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "ro",
+          "relatime"
+        ],
+        "size": "15.49 GiB",
+        "size_bytes": 16627363840,
+        "used": "0 bytes",
+        "used_bytes": 0
+      }
+    },
+    "networking": {
+      "domain": "home",
+      "fqdn": "9a219980fc1f.home",
+      "hostname": "9a219980fc1f",
+      "interfaces": {
+        "eth0": {
+          "bindings": [
+            {
+              "address": "172.20.0.6",
+              "netmask": "255.255.0.0",
+              "network": "172.20.0.0"
+            }
+          ],
+          "ip": "172.20.0.6",
+          "mac": "ee:47:98:4d:95:f9",
+          "netmask": "255.255.0.0",
+          "network": "172.20.0.0",
+          "operational_state": "up",
+          "physical": false
+        },
+        "lo": {
+          "bindings": [
+            {
+              "address": "127.0.0.1",
+              "netmask": "255.0.0.0",
+              "network": "127.0.0.0"
+            }
+          ],
+          "bindings6": [
+            {
+              "address": "::1",
+              "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+              "network": "::1",
+              "scope6": "host",
+              "flags": [
+                "permanent"
+              ]
+            }
+          ],
+          "ip": "127.0.0.1",
+          "ip6": "::1",
+          "netmask": "255.0.0.0",
+          "netmask6": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+          "network": "127.0.0.0",
+          "network6": "::1",
+          "operational_state": "unknown",
+          "physical": false,
+          "scope6": "host"
+        }
+      },
+      "ip": "172.20.0.6",
+      "mac": "ee:47:98:4d:95:f9",
+      "netmask": "255.255.0.0",
+      "network": "172.20.0.0",
+      "primary": "eth0"
+    },
+    "os": {
+      "architecture": "amd64",
+      "distro": {
+        "codename": "jammy",
+        "description": "Ubuntu 22.04.5 LTS",
+        "id": "Ubuntu",
+        "release": {
+          "full": "22.04",
+          "major": "22.04"
+        }
+      },
+      "family": "Debian",
+      "hardware": "x86_64",
+      "name": "Ubuntu",
+      "release": {
+        "full": "22.04",
+        "major": "22.04"
+      },
+      "selinux": {
+        "enabled": false
+      }
+    },
+    "path": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin",
+    "processors": {
+      "cores": 8,
+      "count": 16,
+      "extensions": [
+        "x86_64",
+        "x86_64-v1",
+        "x86_64-v2",
+        "x86_64-v3"
+      ],
+      "isa": "x86_64",
+      "models": [
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics"
+      ],
+      "physicalcount": 1,
+      "speed": "3.19 GHz",
+      "threads": 2
+    },
+    "puppetversion": "8.9.0",
+    "ruby": {
+      "platform": "x86_64-linux",
+      "sitedir": "/opt/puppetlabs/puppet/lib/ruby/site_ruby/3.2.0",
+      "version": "3.2.5"
+    },
+    "system_uptime": {
+      "days": 0,
+      "hours": 1,
+      "seconds": 6754,
+      "uptime": "1:52 hours"
+    },
+    "timezone": "UTC",
+    "virtual": "hyperv",
+    "clientcert": "9a219980fc1f.home",
+    "clientversion": "8.9.0",
+    "clientnoop": false
+  }
+}

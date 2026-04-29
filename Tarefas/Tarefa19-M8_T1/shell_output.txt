@@ -1,0 +1,782 @@
+kibana-1         | [2026-04-28T22:08:05.629+00:00][INFO ][plugins.alerting] Creating concrete write index - .internal.alerts-observability.slo.alerts-default-000001
+kibana-1         | [2026-04-28T22:08:05.631+00:00][INFO ][plugins.alerting] Creating concrete write index - .internal.alerts-security.alerts-default-000001
+kibana-1         | [2026-04-28T22:08:05.635+00:00][INFO ][plugins.alerting] Creating concrete write index - .internal.alerts-observability.threshold.alerts-default-000001
+kibana-1         | [2026-04-28T22:08:05.638+00:00][INFO ][plugins.alerting] Creating concrete write index - .internal.alerts-observability.apm.alerts-default-000001
+kibana-1         | [2026-04-28T22:08:05.641+00:00][INFO ][plugins.alerting] Creating concrete write index - .internal.alerts-observability.metrics.alerts-default-000001
+kibana-1         | [2026-04-28T22:08:05.648+00:00][INFO ][plugins.alerting] Creating concrete write index - .internal.alerts-ml.anomaly-detection.alerts-default-000001
+kibana-1         | [2026-04-28T22:08:05.649+00:00][INFO ][plugins.alerting] Creating concrete write index - .internal.alerts-stack.alerts-default-000001
+kibana-1         | [2026-04-28T22:08:05.659+00:00][INFO ][plugins.alerting] Creating concrete write index - .internal.alerts-observability.logs.alerts-default-000001
+kibana-1         | [2026-04-28T22:08:05.732+00:00][INFO ][plugins.observability] Installing SLO ingest pipeline [.slo-observability.sli.pipeline-v3]
+kibana-1         | [2026-04-28T22:08:05.829+00:00][INFO ][plugins.observabilityAIAssistant.service] Creating concrete write index - .kibana-observability-ai-assistant-kb-000001
+kibana-1         | [2026-04-28T22:08:05.975+00:00][INFO ][plugins.screenshotting.chromium] Browser executable: /usr/share/kibana/node_modules/@kbn/screenshotting-plugin/chromium/headless_shell-linux_x64/headless_shell
+kibana-1         | [2026-04-28T22:08:06.252+00:00][WARN ][plugins.fleet] xpack.encryptedSavedObjects.encryptionKey is not configured, private key passphrase is being stored in plain text
+kibana-1         | [2026-04-28T22:08:06.270+00:00][WARN ][plugins.fleet] xpack.encryptedSavedObjects.encryptionKey is not configured, agent uninstall tokens are being stored in plain text
+kibana-1         | [2026-04-28T22:08:06.273+00:00][INFO ][plugins.observabilityAIAssistant.service] Successfully set up index assets
+kibana-1         | [2026-04-28T22:08:06.439+00:00][INFO ][plugins.fleet] Fleet setup completed
+kibana-1         | [2026-04-28T22:08:06.440+00:00][INFO ][plugins.securitySolution] Dependent plugin setup complete - Starting ManifestTask
+kibana-1         | [2026-04-28T22:08:06.441+00:00][INFO ][plugins.securitySolution.endpoint.policyProtections] App feature [endpoint_policy_protections] is enabled. Nothing to do!
+kibana-1         | [2026-04-28T22:08:06.810+00:00][INFO ][plugins.synthetics] Installed synthetics index templates
+kibana-1         | [2026-04-28T22:08:08.575+00:00][INFO ][status.plugins.alerting] alerting plugin is now available: Alerting is (probably) ready
+kibana-1         | [2026-04-28T22:08:08.575+00:00][INFO ][status.plugins.fleet] fleet plugin is now available: Fleet is available
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:23.932Z", "log.level": "INFO", "message":"parsed [0] roles from file [/usr/share/elasticsearch/config/roles.yml]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"main","log.logger":"org.elasticsearch.xpack.security.authz.store.FileRolesStore","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:24.417Z", "log.level": "INFO", "message":"Watcher initialized components at 2026-04-28T22:07:24.417Z", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"main","log.logger":"org.elasticsearch.xpack.watcher.Watcher","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:24.460Z", "log.level": "INFO", "message":"Profiling is enabled", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"main","log.logger":"org.elasticsearch.xpack.profiling.ProfilingPlugin","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:24.480Z", "log.level": "INFO", "message":"profiling index templates will not be installed or reinstalled", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"main","log.logger":"org.elasticsearch.xpack.profiling.ProfilingPlugin","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:24.523Z", "log.level": "INFO", "message":"APM ingest plugin is disabled", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"main","log.logger":"org.elasticsearch.xpack.apmdata.APMPlugin","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:25.014Z", "log.level": "INFO", "message":"creating NettyAllocator with the following configs: [name=unpooled, suggested_max_allocation_size=1mb, factors={es.unsafe.use_unpooled_allocator=null, g1gc_enabled=true, g1gc_region_size=4mb, heap_size=512mb}]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"main","log.logger":"org.elasticsearch.transport.netty4.NettyAllocator","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:25.043Z", "log.level": "INFO", "message":"using rate limit [40mb] with [default=40mb, read=0b, write=0b, max=0b]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"main","log.logger":"org.elasticsearch.indices.recovery.RecoverySettings","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:25.079Z", "log.level": "INFO", "message":"using discovery type [single-node] and seed hosts providers [settings]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"main","log.logger":"org.elasticsearch.discovery.DiscoveryModule","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:26.190Z", "log.level": "INFO", "message":"initialized", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"main","log.logger":"org.elasticsearch.node.Node","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:26.191Z", "log.level": "INFO", "message":"starting ...", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"main","log.logger":"org.elasticsearch.node.Node","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:26.228Z", "log.level": "INFO", "message":"persistent cache index loaded", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"main","log.logger":"org.elasticsearch.xpack.searchablesnapshots.cache.full.PersistentCache","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:26.228Z", "log.level": "INFO", "message":"deprecation component started", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"main","log.logger":"org.elasticsearch.xpack.deprecation.logging.DeprecationIndexingComponent","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:26.299Z", "log.level": "INFO", "message":"publish_address {172.18.0.2:9300}, bound_addresses {[::]:9300}", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"main","log.logger":"org.elasticsearch.transport.TransportService","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:30.047Z", "log.level": "WARN", "message":"Transport SSL must be enabled if security is enabled. Please set [xpack.security.transport.ssl.enabled] to [true] or disable security by setting [xpack.security.enabled] to [false]; for more information see [https://www.elastic.co/guide/en/elasticsearch/reference/8.12/bootstrap-checks-xpack.html#bootstrap-checks-tls]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"main","log.logger":"org.elasticsearch.bootstrap.BootstrapChecks","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:30.048Z", "log.level": "INFO", "message":"this node is locked into cluster UUID [CVjYYhcHRZuYVlHRv-YUCA] and will not attempt further cluster bootstrapping", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"main","log.logger":"org.elasticsearch.cluster.coordination.ClusterBootstrapService","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:30.164Z", "log.level": "INFO", "message":"elected-as-master ([1] nodes joined in term 4)[_FINISH_ELECTION_, {elasticsearch}{1eD5cq_PTFyQbZN72XjTzw}{CgCLeMDLQPKRnJQrHVFBug}{elasticsearch}{172.18.0.2}{172.18.0.2:9300}{cdfhilmrstw}{8.12.2}{7000099-8500010} completing election], term: 4, version: 178, delta: master node changed {previous [], current [{elasticsearch}{1eD5cq_PTFyQbZN72XjTzw}{CgCLeMDLQPKRnJQrHVFBug}{elasticsearch}{172.18.0.2}{172.18.0.2:9300}{cdfhilmrstw}{8.12.2}{7000099-8500010}]}", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][masterService#updateTask][T#1]","log.logger":"org.elasticsearch.cluster.service.MasterService","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:30.253Z", "log.level": "INFO", "message":"master node changed {previous [], current [{elasticsearch}{1eD5cq_PTFyQbZN72XjTzw}{CgCLeMDLQPKRnJQrHVFBug}{elasticsearch}{172.18.0.2}{172.18.0.2:9300}{cdfhilmrstw}{8.12.2}{7000099-8500010}]}, term: 4, version: 178, reason: Publication{term=4, version=178}", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][clusterApplierService#updateTask][T#1]","log.logger":"org.elasticsearch.cluster.service.ClusterApplierService","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:30.281Z", "log.level": "INFO", "message":"starting file watcher ...", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][clusterApplierService#updateTask][T#1]","log.logger":"org.elasticsearch.common.file.AbstractFileWatchingService","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:30.285Z", "log.level": "INFO", "message":"file settings service up and running [tid=85]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[file-watcher[/usr/share/elasticsearch/config/operator/settings.json]]","log.logger":"org.elasticsearch.common.file.AbstractFileWatchingService","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:30.291Z", "log.level": "INFO", "message":"publish_address {172.18.0.2:9200}, bound_addresses {[::]:9200}", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"main","log.logger":"org.elasticsearch.http.AbstractHttpServerTransport","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:30.291Z", "log.level": "INFO", "message":"node-join: [{elasticsearch}{1eD5cq_PTFyQbZN72XjTzw}{CgCLeMDLQPKRnJQrHVFBug}{elasticsearch}{172.18.0.2}{172.18.0.2:9300}{cdfhilmrstw}{8.12.2}{7000099-8500010}] with reason [completing election]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][masterService#updateTask][T#1]","log.logger":"org.elasticsearch.cluster.coordination.NodeJoinExecutor","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:30.302Z", "log.level": "INFO", "message":"started {elasticsearch}{1eD5cq_PTFyQbZN72XjTzw}{CgCLeMDLQPKRnJQrHVFBug}{elasticsearch}{172.18.0.2}{172.18.0.2:9300}{cdfhilmrstw}{8.12.2}{7000099-8500010}{transform.config_version=10.0.0, xpack.installed=true, ml.config_version=12.0.0, ml.max_jvm_size=536870912, ml.allocated_processors_double=16.0, ml.allocated_processors=16, ml.machine_memory=33254723584}", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"main","log.logger":"org.elasticsearch.node.Node","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:31.346Z", "log.level": "INFO", "message":"license mode is [trial], currently licensed security realms are [reserved/reserved,file/default_file,native/default_native]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][clusterApplierService#updateTask][T#1]","log.logger":"org.elasticsearch.xpack.security.authc.Realms","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:31.348Z", "log.level": "INFO", "message":"license [4937c6dd-f517-4638-8585-58439d6755fd] mode [trial] - valid", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][clusterApplierService#updateTask][T#1]","log.logger":"org.elasticsearch.license.ClusterStateLicenseService","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:31.351Z", "log.level": "INFO", "message":"recovered [31] indices into cluster_state", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][masterService#updateTask][T#1]","log.logger":"org.elasticsearch.gateway.GatewayService","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:31.833Z", "log.level": "INFO", "message":"Node [{elasticsearch}{1eD5cq_PTFyQbZN72XjTzw}] is selected as the current health node.", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][management][T#3]","log.logger":"org.elasticsearch.health.node.selection.HealthNodeTaskExecutor","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:31.834Z", "log.level":"ERROR", "message":"exception during geoip databases update", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][generic][T#3]","log.logger":"org.elasticsearch.ingest.geoip.GeoIpDownloader","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster","error.type":"org.elasticsearch.ElasticsearchException","error.message":"not all primary shards of [.geoip_databases] index are active","error.stack_trace":"org.elasticsearch.ElasticsearchException: not all primary shards of [.geoip_databases] index are active\n\tat org.elasticsearch.ingest.geoip@8.12.2/org.elasticsearch.ingest.geoip.GeoIpDownloader.updateDatabases(GeoIpDownloader.java:131)\n\tat org.elasticsearch.ingest.geoip@8.12.2/org.elasticsearch.ingest.geoip.GeoIpDownloader.runDownloader(GeoIpDownloader.java:279)\n\tat org.elasticsearch.ingest.geoip@8.12.2/org.elasticsearch.ingest.geoip.GeoIpDownloaderTaskExecutor.nodeOperation(GeoIpDownloaderTaskExecutor.java:160)\n\tat org.elasticsearch.ingest.geoip@8.12.2/org.elasticsearch.ingest.geoip.GeoIpDownloaderTaskExecutor.nodeOperation(GeoIpDownloaderTaskExecutor.java:59)\n\tat org.elasticsearch.server@8.12.2/org.elasticsearch.persistent.NodePersistentTasksExecutor$1.doRun(NodePersistentTasksExecutor.java:42)\n\tat org.elasticsearch.server@8.12.2/org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingAbstractRunnable.doRun(ThreadContext.java:983)\n\tat org.elasticsearch.server@8.12.2/org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:26)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)\n\tat java.base/java.lang.Thread.run(Thread.java:1583)\n"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:32.458Z", "log.level": "INFO", "message":"successfully loaded geoip database file [GeoLite2-Country.mmdb]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][generic][T#1]","log.logger":"org.elasticsearch.ingest.geoip.DatabaseNodeService","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:32.507Z", "log.level": "INFO", "message":"successfully loaded geoip database file [GeoLite2-ASN.mmdb]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][generic][T#3]","log.logger":"org.elasticsearch.ingest.geoip.DatabaseNodeService","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:32.999Z", "log.level": "INFO", "message":"successfully loaded geoip database file [GeoLite2-City.mmdb]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][generic][T#4]","log.logger":"org.elasticsearch.ingest.geoip.DatabaseNodeService","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:33.198Z", "log.level": "INFO",  "current.health":"GREEN","message":"Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[.apm-source-map][0]]]).","previous.health":"RED","reason":"shards started [[.apm-source-map][0]]" , "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][masterService#updateTask][T#1]","log.logger":"org.elasticsearch.cluster.routing.allocation.AllocationService","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:33.521Z", "log.level": "INFO", "message":"updated role [heartbeat_writer]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][management][T#1]","log.logger":"org.elasticsearch.xpack.security.action.role.TransportPutRoleAction","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:33.571Z", "log.level": "INFO", "message":"updated role [metricbeat_writer]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][management][T#1]","log.logger":"org.elasticsearch.xpack.security.action.role.TransportPutRoleAction","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:33.631Z", "log.level": "INFO", "message":"updated role [filebeat_writer]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][management][T#1]","log.logger":"org.elasticsearch.xpack.security.action.role.TransportPutRoleAction","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:07:33.691Z", "log.level": "INFO", "message":"updated role [logstash_writer]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][management][T#1]","log.logger":"org.elasticsearch.xpack.security.action.role.TransportPutRoleAction","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster"}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:08:05.508Z", "log.level": "INFO", "message":"updating [index.mapping.total_fields.limit] from [1000] to [10000]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][masterService#updateTask][T#1]","log.logger":"org.elasticsearch.common.settings.IndexScopedSettings","trace.id":"f8ab6c0d5f4b31b2c1fe960d0a6e204c","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster","tags":[" [.kibana-observability-ai-assistant-conversations-000001]"]}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:08:05.585Z", "log.level": "INFO", "message":"updating [index.mapping.total_fields.limit] from [1000] to [10000]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][clusterApplierService#updateTask][T#1]","log.logger":"org.elasticsearch.common.settings.IndexScopedSettings","trace.id":"f8ab6c0d5f4b31b2c1fe960d0a6e204c","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster","tags":[" [.kibana-observability-ai-assistant-conversations-000001]"]}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:08:05.933Z", "log.level": "INFO", "message":"updating [index.mapping.total_fields.limit] from [1000] to [10000]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][masterService#updateTask][T#1]","log.logger":"org.elasticsearch.common.settings.IndexScopedSettings","trace.id":"f8ab6c0d5f4b31b2c1fe960d0a6e204c","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster","tags":[" [.kibana-observability-ai-assistant-kb-000001]"]}
+elasticsearch-1  | {"@timestamp":"2026-04-28T22:08:05.995Z", "log.level": "INFO", "message":"updating [index.mapping.total_fields.limit] from [1000] to [10000]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[elasticsearch][clusterApplierService#updateTask][T#1]","log.logger":"org.elasticsearch.common.settings.IndexScopedSettings","trace.id":"f8ab6c0d5f4b31b2c1fe960d0a6e204c","elasticsearch.cluster.uuid":"CVjYYhcHRZuYVlHRv-YUCA","elasticsearch.node.id":"1eD5cq_PTFyQbZN72XjTzw","elasticsearch.node.name":"elasticsearch","elasticsearch.cluster.name":"docker-cluster","tags":[" [.kibana-observability-ai-assistant-kb-000001]"]}
+kibana-1         | [2026-04-28T22:08:08.575+00:00][INFO ][status.plugins.licensing] licensing plugin is now available: License fetched
+kibana-1         | [2026-04-28T22:08:08.575+00:00][INFO ][status.plugins.taskManager] taskManager plugin is now available: Task Manager is healthy
+kibana-1         | [2026-04-28T22:08:08.654+00:00][INFO ][status] Kibana is now available
+kibana-1         | [2026-04-28T22:08:08.694+00:00][INFO ][plugins.ml] Task ML:saved-objects-sync-task: No ML saved objects in need of synchronization
+kibana-1         | [2026-04-28T22:09:08.569+00:00][INFO ][plugins.securitySolution.endpoint:user-artifact-packager:1.0.0] Started. Checking for changes to endpoint artifacts
+kibana-1         | [2026-04-28T22:09:08.573+00:00][INFO ][plugins.securitySolution.endpoint:user-artifact-packager:1.0.0] Last computed manifest not available yet
+kibana-1         | [2026-04-28T22:09:08.573+00:00][INFO ][plugins.securitySolution.endpoint:user-artifact-packager:1.0.0] Complete. Task run took 4ms [ stated: 2026-04-28T22:09:08.569Z ]
+^C
+make: *** [Makefile:12: elk_logs] Error 130
+
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/docker-elk-main$ make elk_stop
+docker-compose down
+[+] Running 4/4
+ ✔ Container docker-elk-main-kibana-1         Removed                                                                                   1.6s 
+ ✔ Container docker-elk-main-logstash-1       Removed                                                                                  10.8s 
+ ✔ Container docker-elk-main-elasticsearch-1  Removed                                                                                   3.2s 
+ ✔ Network docker-elk-main_elk                Removed                                                                                   0.3s 
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/docker-elk-main$ make clean
+docker stop $(docker ps -qa) || true
+feecc0aa622d
+docker system prune -af --volumes
+Deleted Containers:
+feecc0aa622d1ec9d29f6d3fe884d56b0ef658620d931ee6affd273c58571303
+
+Deleted Images:
+untagged: motoserver/moto:latest
+untagged: motoserver/moto@sha256:327b627bdd2f795cf99e71822ab1356ce6c6ed658db1121db7db935bbc510a1c
+deleted: sha256:86374e4cfa2c45ac58154f9bfb55c476d241c8ba2c9e372cd157162fa4b9bb72
+deleted: sha256:83384f4cee0da14801e5c9061701cc5d70cea34380c9611dfca03cbea41de089
+deleted: sha256:de0d4868545fa216579d590d205bfe5af06f7a500273eb6be2c355bff69228d7
+deleted: sha256:33d15a090a7ccb5eeb7ad53505745e9ccf2b045047fee973d3fad569b6115111
+deleted: sha256:639c143361bfe210fb0eb598c95db88f0528e2b16167ba4acff68ab1eb1b5060
+deleted: sha256:d25b3bca1617cfda2e05cc85651ac1ca13681d06f7c2319f93f5291b778004c9
+deleted: sha256:75bb8f953c7695a14ed3d33aaac755e7878e5661d11aafa20c065bc7afe62e7d
+deleted: sha256:22547db328e74c8527a496a75bc963fa5a09575058dbebea73a6c67a7c94e8d8
+deleted: sha256:989e799e634906e94dc9a5ee2ee26fc92ad260522990f26e707861a5f52bf64e
+untagged: docker-elk-main-elasticsearch:latest
+deleted: sha256:da21ec2240be54cd5705babb114f71dc781ba3c0b8b061e4065775c0739eb2b2
+untagged: docker-elk-main-logstash:latest
+deleted: sha256:8a35aafe7ee27c8ff724d6887de1f118e191e635b56021815e5b9373c91a8aea
+untagged: docker-elk-main-kibana:latest
+deleted: sha256:22438d835094c9c4cc1d4c78f7c4bb375d5b1bb478859226a42ac134c50425a9
+untagged: docker-elk-main-setup:latest
+deleted: sha256:5b709bec6f70811fc6212a87e723cd13cf8cbe5cdcdf1fef37f0429d951ecbd9
+
+Deleted build cache objects:
+ritkusu9c1xjq0jgm360i875u
+icmwp5oexed1inzi6yxv8bgmg
+6xdc4oyd6fh23fastjsjc6zym
+6jtd58jz94ops779mv3ulsle2
+tjtpfatp3inbju2uihmum3lup
+dt4p4cns8dkwcdn7sj6dpnn35
+qlgkml9wnoed0awb43a7jjo96
+slsnh7o3snskrhxolwzy5xtx8
+wbiz8n8nc06pwpdlz4lxegl2c
+8dx7pf3fxcvh2o2227s092uzd
+qx2tex7xo4eamh268qgus21gz
+wu9wcgwf8nzrfc3k424dewp9w
+lzc4yeb5ithjtkebosbeckh8p
+pdcrza1v2c8bv1lekp5x57vca
+kadlzz25nldbz3hwsilmlna6j
+tm5vgta87sh7l817ekf7y7v7r
+mgbjlp1vm5v26iot339zg5r18
+67dfa93mhz04ijdo09g5b158i
+vjcvipbivscmqt430p9pfbi3v
+oyxpzf4grlas6r7t7i0pzv2s3
+gzvn38ss4tt2te77n5tb7wykj
+cwvtotuqy6vkm5kei1n49uity
+we3o3055jq3w5ynclottzu69l
+udblrgz1kq358ghwbx4wwuxrk
+rs6jyo17k8oe80sbpj36yo7se
+9xxohxiqgtlfivyqtrb6v33f4
+83mqyogc6loges472f9wyyb7d
+rnavgc2lq115uxk6h95fslgpw
+bmhhwcsd44bmp39uejea036c5
+4lcf7abtwnwh8f22ku07hg936
+eb0tt5m3se8p8z6rfceq8tmli
+f3z8x9wlvzkj3e6eho7xj8c7l
+r4mjsqjz300dij35abxhklp3p
+t0d7cm07nikw7z5hkn7r9lkpi
+ulxpw3uxwxst2qhmcx8yrnfd4
+sy6ff03ilr4wjn3os36x7huwv
+nhnh2iu3do3ebujq243y2a0p6
+ueumy6upaf8ggfufq00zw6ngq
+4ia50x7zgnstskdzb5rr0d8kf
+rx54cih6ij5q62sn5qsa9442e
+7zv8s9fhtueqa8qzecmgnuh4y
+qduf6jtkevv8unn3vp27qrx00
+kv0m33ndc60z1p7u60a27mq54
+efblu0flh0aau64iaycecyp4f
+urvhqk1mufqpede1gszt8d29g
+
+Total reclaimed space: 390.1MB
+docker network prune -f
+docker volume prune -af
+Deleted Volumes:
+docker-elk-main_elasticsearch
+
+Total reclaimed space: 51.06MB
+docker network prune -f
+docker builder prune -af
+Total:  0B
+docker system df
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          0         0         0B        0B
+Containers      0         0         0B        0B
+Local Volumes   0         0         0B        0B
+Build Cache     0         0         0B        0B
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/docker-elk-main$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/docker-elk-main$ cd ..
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1$ ls -la
+total 208
+drwxr-xr-x  4 querinoz querinoz   4096 Apr 28 23:01  .
+drwxr-xr-x 21 querinoz querinoz   4096 Apr 28 22:37  ..
+-rw-r--r--  1 querinoz querinoz  56774 Apr 28 22:37 'Tarefa19 - ELK_HLD.drawio.png'
+-rw-r--r--  1 querinoz querinoz     25 Apr 28 22:38 'Tarefa19 - ELK_HLD.drawio.png:Zone.Identifier'
+drwxrwxr-x  8 querinoz querinoz   4096 Apr 20  2024  docker-elk-main
+drwxrwxr-x  4 querinoz querinoz   4096 Apr 20  2024  otel-python
+-rw-r--r--  1 querinoz querinoz 133666 Apr 28 23:02  shell_output.txt
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1$ cd otel-python/
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ ls -la
+total 24
+drwxrwxr-x 4 querinoz querinoz 4096 Apr 20  2024 .
+drwxr-xr-x 4 querinoz querinoz 4096 Apr 28 23:01 ..
+-rw-rw-r-- 1 querinoz querinoz 1442 Apr 20  2024 README.md
+-rw-rw-r-- 1 querinoz querinoz 1521 Apr 20  2024 docker-compose.yml
+drwxrwxr-x 2 querinoz querinoz 4096 Apr 20  2024 todo
+drwxrwxr-x 2 querinoz querinoz 4096 Apr 20  2024 user
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ cat docker-compose.yml
+version: "3.9"
+services:
+  user:
+    container_name: user
+    build: ./user
+    ports:
+      - 5000:5000
+    environment:
+      - OTEL_SERVICE_NAME=user-service
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4317
+      - OTEL_METRICS_EXPORTER=none
+      - OTEL_LOGS_EXPORTER=none
+
+  todo:
+    container_name: todo
+    build: ./todo
+    ports:
+      - 5001:5000
+    environment:
+      - OTEL_SERVICE_NAME=todo-service
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4317
+      - OTEL_METRICS_EXPORTER=none
+      - OTEL_LOGS_EXPORTER=none
+
+  jaeger:
+    image: "jaegertracing/all-in-one:latest"
+    container_name: jaeger
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+      - COLLECTOR_ZIPKIN_HOST_PORT=:9411
+    ports:
+      - 4317:4317     # accept OpenTelemetry Protocol (OTLP) over gRPC
+      - 4318:4318     # accept OpenTelemetry Protocol (OTLP) over HTTP
+      - 5775:5775/udp # (deprecated) accept zipkin.thrift over compact Thrift protocol (used by legacy clients only)
+      - 5778:5778     # serve configs (sampling, etc.)
+      - 6831:6831/udp # accept jaeger.thrift over Thrift-compact protocol 
+      - 6832:6832/udp # accept jaeger.thrift over Thrift-binary protocol
+      - 9411:9411     # Default endpoint for Zipkin receiver.
+      - 16685:16685   # Starting GRPC server
+      - 16686:16686   # Starting HTTP server
+      - 14268:14268   # accept jaeger.thrift directly from clients
+      - 14269:14269   # accept jaeger.thrift directly from clients
+      - 14250:14250   # accept model.proto
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ nano Makefile
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ cat Makefile
+.PHONY: start stop clean
+
+start:
+        docker buildx create --name otelbuilder 2>/dev/null || true
+        docker buildx use otelbuilder
+        docker buildx build user
+        docker buildx build todo
+        docker-compose up -d
+        @echo "Jaeger UI:    http://localhost:16686"
+        @echo "User service: http://localhost:5000"
+        @echo "Todo service: http://localhost:5001"
+
+stop:
+        docker-compose stop
+
+clean:
+        docker-compose down
+        docker buildx rm otelbuilder 2>/dev/null || true
+        docker buildx prune -f
+        docker stop $$(docker ps -qa) 2>/dev/null || true
+        docker system prune -af --volumes
+        docker network prune -f
+        docker volume prune -af
+        docker builder prune -af
+        docker system df
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ make start
+docker buildx create --name otelbuilder 2>/dev/null || true
+otelbuilder
+docker buildx use otelbuilder
+docker buildx build user
+[+] Building 63.3s (12/12) FINISHED                                                                             docker-container:otelbuilder
+ => [internal] booting buildkit                                                                                                         7.3s
+ => => pulling image moby/buildkit:buildx-stable-1                                                                                      6.6s
+ => => creating container buildx_buildkit_otelbuilder0                                                                                  0.7s
+ => [internal] load build definition from Dockerfile                                                                                    0.0s
+ => => transferring dockerfile: 267B                                                                                                    0.0s
+ => [internal] load metadata for docker.io/library/python:latest                                                                        1.6s
+ => [internal] load .dockerignore                                                                                                       0.0s
+ => => transferring context: 2B                                                                                                         0.0s
+ => [1/7] FROM docker.io/library/python:latest@sha256:0ba001803c72c128063cfa88863755f905cefabe73c026c66a5a86d8f1d63e98                 17.4s
+ => => resolve docker.io/library/python:latest@sha256:0ba001803c72c128063cfa88863755f905cefabe73c026c66a5a86d8f1d63e98                  0.0s
+ => => sha256:eeb7fd4cccd45b42e687698ec2548c0c27a3a2d94cee60c14cb0d8735054d67f 249B / 249B                                              0.3s
+ => => sha256:10ef5c83b2fab95d516b867eef28f013c5cf72f601c705f76bcfa685e2921c9b 29.49MB / 29.49MB                                        2.0s
+ => => sha256:bbfdb8accfe4740cfd53271aea8e86866b54857cbcbc87be60359324e38d5dad 6.09MB / 6.09MB                                          1.2s
+ => => sha256:1e1bb20756a85e159dfb7908a2a5c860ac2f2254254a915d8c047e02cb2b0259 236.07MB / 236.07MB                                     10.5s
+ => => sha256:20d12c8f3f3fbb5bd2b8369adf3213e09d6b33f975462543ddfece85b2fe85e5 67.79MB / 67.79MB                                        8.0s
+ => => sha256:5467f93954cfe1451f4333422086d00bd066cf33f42112b531804ffe06f0a929 25.62MB / 25.62MB                                        3.4s
+ => => sha256:3b32e3bb7338c216b077e95920ae53332d81bd57f4a7393bc324432d5a3f88a2 49.30MB / 49.30MB                                        3.4s
+ => => extracting sha256:3b32e3bb7338c216b077e95920ae53332d81bd57f4a7393bc324432d5a3f88a2                                               1.9s
+ => => extracting sha256:5467f93954cfe1451f4333422086d00bd066cf33f42112b531804ffe06f0a929                                               0.8s
+ => => extracting sha256:20d12c8f3f3fbb5bd2b8369adf3213e09d6b33f975462543ddfece85b2fe85e5                                               2.3s
+ => => extracting sha256:1e1bb20756a85e159dfb7908a2a5c860ac2f2254254a915d8c047e02cb2b0259                                               5.6s
+ => => extracting sha256:bbfdb8accfe4740cfd53271aea8e86866b54857cbcbc87be60359324e38d5dad                                               0.2s
+ => => extracting sha256:10ef5c83b2fab95d516b867eef28f013c5cf72f601c705f76bcfa685e2921c9b                                               0.7s
+ => => extracting sha256:eeb7fd4cccd45b42e687698ec2548c0c27a3a2d94cee60c14cb0d8735054d67f                                               0.0s
+ => [internal] load build context                                                                                                       0.1s
+ => => transferring context: 3.04kB                                                                                                     0.0s
+ => [2/7] WORKDIR /code                                                                                                                 1.4s
+ => [3/7] COPY requirements.txt requirements.txt                                                                                        0.0s
+ => [4/7] RUN python3 -m venv .venv                                                                                                     3.0s
+ => [5/7] RUN . .venv/bin/activate                                                                                                      0.1s
+ => [6/7] RUN pip install -r requirements.txt                                                                                          35.0s
+ => [7/7] COPY . .                                                                                                                      0.1s
+WARNING: No output specified with docker-container driver. Build result will only remain in the build cache. To push result image into registry use --push or to load image into docker use --load
+docker buildx build todo
+[+] Building 0.4s (11/11) FINISHED                                                                              docker-container:otelbuilder
+ => [internal] load build definition from Dockerfile                                                                                    0.0s
+ => => transferring dockerfile: 267B                                                                                                    0.0s
+ => [internal] load metadata for docker.io/library/python:latest                                                                        0.2s
+ => [internal] load .dockerignore                                                                                                       0.0s
+ => => transferring context: 2B                                                                                                         0.0s
+ => [1/7] FROM docker.io/library/python:latest@sha256:0ba001803c72c128063cfa88863755f905cefabe73c026c66a5a86d8f1d63e98                  0.0s
+ => => resolve docker.io/library/python:latest@sha256:0ba001803c72c128063cfa88863755f905cefabe73c026c66a5a86d8f1d63e98                  0.0s
+ => [internal] load build context                                                                                                       0.0s
+ => => transferring context: 3.84kB                                                                                                     0.0s
+ => CACHED [2/7] WORKDIR /code                                                                                                          0.0s
+ => CACHED [3/7] COPY requirements.txt requirements.txt                                                                                 0.0s
+ => CACHED [4/7] RUN python3 -m venv .venv                                                                                              0.0s
+ => CACHED [5/7] RUN . .venv/bin/activate                                                                                               0.0s
+ => CACHED [6/7] RUN pip install -r requirements.txt                                                                                    0.0s
+ => [7/7] COPY . .                                                                                                                      0.0s
+WARNING: No output specified with docker-container driver. Build result will only remain in the build cache. To push result image into registry use --push or to load image into docker use --load
+docker-compose up -d
+WARN[0000] /home/querinoz/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+[+] Running 6/6
+ ✔ jaeger Pulled                                                                                                                        4.3s 
+   ✔ 2d35ebdb57d9 Pull complete                                                                                                         0.9s 
+   ✔ 1b88e4b47f1c Pull complete                                                                                                         0.9s 
+   ✔ bb428e799734 Pull complete                                                                                                         1.0s 
+   ✔ e52dc8c18e3f Pull complete                                                                                                         2.0s 
+   ✔ 7dbec0deab4e Pull complete                                                                                                         2.1s 
+[+] Building 29.8s (26/26) FINISHED                                                                                                          
+ => [internal] load local bake definitions                                                                                              0.0s
+ => => reading from stdin 1.23kB                                                                                                        0.0s
+ => [user internal] load build definition from Dockerfile                                                                               0.0s
+ => => transferring dockerfile: 267B                                                                                                    0.0s
+ => [todo internal] load build definition from Dockerfile                                                                               0.0s
+ => => transferring dockerfile: 267B                                                                                                    0.0s
+ => [todo internal] load metadata for docker.io/library/python:latest                                                                   0.2s
+ => [todo internal] load .dockerignore                                                                                                  0.0s
+ => => transferring context: 2B                                                                                                         0.0s
+ => [user internal] load .dockerignore                                                                                                  0.0s
+ => => transferring context: 2B                                                                                                         0.0s
+ => [user 1/7] FROM docker.io/library/python:latest@sha256:0ba001803c72c128063cfa88863755f905cefabe73c026c66a5a86d8f1d63e98             0.0s
+ => => resolve docker.io/library/python:latest@sha256:0ba001803c72c128063cfa88863755f905cefabe73c026c66a5a86d8f1d63e98                  0.0s
+ => [todo internal] load build context                                                                                                  0.0s
+ => => transferring context: 132B                                                                                                       0.0s
+ => [user internal] load build context                                                                                                  0.0s
+ => => transferring context: 132B                                                                                                       0.0s
+ => CACHED [todo 2/7] WORKDIR /code                                                                                                     0.0s
+ => CACHED [user 3/7] COPY requirements.txt requirements.txt                                                                            0.0s
+ => CACHED [user 4/7] RUN python3 -m venv .venv                                                                                         0.0s
+ => CACHED [user 5/7] RUN . .venv/bin/activate                                                                                          0.0s
+ => CACHED [user 6/7] RUN pip install -r requirements.txt                                                                               0.0s
+ => CACHED [user 7/7] COPY . .                                                                                                          0.0s
+ => CACHED [todo 3/7] COPY requirements.txt requirements.txt                                                                            0.0s
+ => CACHED [todo 4/7] RUN python3 -m venv .venv                                                                                         0.0s
+ => CACHED [todo 5/7] RUN . .venv/bin/activate                                                                                          0.0s
+ => CACHED [todo 6/7] RUN pip install -r requirements.txt                                                                               0.0s
+ => CACHED [todo 7/7] COPY . .                                                                                                          0.0s
+ => [todo] exporting to docker image format                                                                                            29.1s
+ => => exporting layers                                                                                                                 2.4s
+ => => exporting manifest sha256:9ce76044a30f2aab3d75ff3cf825476a4663e51fb891fe41a41054e5f0a266ba                                       0.0s
+ => => exporting config sha256:59e3319315abc59ffa7edee0e44e5a3e92a96c0a29ced8557b803851b548873f                                         0.0s
+ => => sending tarball                                                                                                                 26.7s
+ => [user] exporting to docker image format                                                                                            29.3s
+ => => exporting layers                                                                                                                 2.4s
+ => => exporting manifest sha256:22949036fdc8c564cd2642f262fd740e501362bc8cc8c76d043d61275ae6efd8                                       0.0s
+ => => exporting config sha256:793661981f946061e74feefb7e60c61bdfb66d03592a92fde7d9a90adfab374f                                         0.0s
+ => => sending tarball                                                                                                                 26.9s
+ => importing to docker                                                                                                                22.2s
+ => => loading layer 838e471be078 49.30MB / 49.30MB                                                                                    22.2s
+ => => loading layer cb623b1a45c4 25.62MB / 25.62MB                                                                                    19.4s
+ => => loading layer 8facc29b1c2c 67.79MB / 67.79MB                                                                                    18.4s
+ => => loading layer acc5d3132418 236.07MB / 236.07MB                                                                                  14.7s
+ => => loading layer b3d557b58878 6.09MB / 6.09MB                                                                                       5.2s
+ => => loading layer c2daee30b925 29.49MB / 29.49MB                                                                                     4.8s
+ => => loading layer 0d1fb102ab1a 249B / 249B                                                                                           3.6s
+ => => loading layer 966cca9a16a5 94B / 94B                                                                                             3.6s
+ => => loading layer 953ac6faf256 313B / 313B                                                                                           3.5s
+ => => loading layer 425f3ec463dd 5.71MB / 5.71MB                                                                                       3.5s
+ => => loading layer 5f70bf18a086 32B / 32B                                                                                             2.9s
+ => => loading layer 5faf4d59d9fa 37.76MB / 37.76MB                                                                                     2.8s
+ => => loading layer 5f69d7e1e1f0 1.18kB / 1.18kB                                                                                       0.2s
+ => importing to docker                                                                                                                22.4s
+ => => loading layer 838e471be078 49.30MB / 49.30MB                                                                                    22.4s
+ => => loading layer cb623b1a45c4 25.62MB / 25.62MB                                                                                    19.5s
+ => => loading layer 8facc29b1c2c 67.79MB / 67.79MB                                                                                    18.4s
+ => => loading layer acc5d3132418 236.07MB / 236.07MB                                                                                  14.4s
+ => => loading layer c2daee30b925 29.49MB / 29.49MB                                                                                     4.2s
+ => => loading layer 5faf4d59d9fa 37.76MB / 37.76MB                                                                                     3.0s
+ => => loading layer 365dabd69716 1.02kB / 1.02kB                                                                                       0.2s
+ => [todo] resolving provenance for metadata file                                                                                       0.0s
+ => [user] resolving provenance for metadata file                                                                                       0.0s
+[+] Running 6/6
+ ✔ otel-python-user             Built                                                                                                   0.0s 
+ ✔ otel-python-todo             Built                                                                                                   0.0s 
+ ✔ Network otel-python_default  Created                                                                                                 0.0s 
+ ✔ Container user               Started                                                                                                 2.4s 
+ ✔ Container todo               Started                                                                                                 1.9s 
+ ✔ Container jaeger             Started                                                                                                 2.3s 
+Jaeger UI:    http://localhost:16686
+User service: http://localhost:5000
+Todo service: http://localhost:5001
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ docker-compose ps
+WARN[0000] /home/querinoz/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+NAME      IMAGE                             COMMAND                  SERVICE   CREATED         STATUS         PORTS
+jaeger    jaegertracing/all-in-one:latest   "/go/bin/all-in-one-…"   jaeger    6 minutes ago   Up 6 minutes   0.0.0.0:4317-4318->4317-4318/tcp, [::]:4317-4318->4317-4318/tcp, 0.0.0.0:5775->5775/udp, [::]:5775->5775/udp, 0.0.0.0:5778->5778/tcp, [::]:5778->5778/tcp, 0.0.0.0:9411->9411/tcp, [::]:9411->9411/tcp, 0.0.0.0:14250->14250/tcp, [::]:14250->14250/tcp, 0.0.0.0:14268-14269->14268-14269/tcp, [::]:14268-14269->14268-14269/tcp, 0.0.0.0:16685-16686->16685-16686/tcp, [::]:16685-16686->16685-16686/tcp, 0.0.0.0:6831-6832->6831-6832/udp, [::]:6831-6832->6831-6832/udp
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ docker ps -a
+CONTAINER ID   IMAGE                             COMMAND                  CREATED          STATUS                     PORTS                                                                                                                                                                                                                                                                                                                                                                                                                                                                        NAMES
+42747c8280e8   otel-python-todo                  "opentelemetry-instr…"   8 minutes ago    Exited (1) 8 minutes ago                                                                                                                                                                                                                                                                                                                                                                                                                                                                                todo
+cc6074655816   jaegertracing/all-in-one:latest   "/go/bin/all-in-one-…"   8 minutes ago    Up 8 minutes               0.0.0.0:4317-4318->4317-4318/tcp, [::]:4317-4318->4317-4318/tcp, 0.0.0.0:5775->5775/udp, [::]:5775->5775/udp, 0.0.0.0:5778->5778/tcp, [::]:5778->5778/tcp, 0.0.0.0:9411->9411/tcp, [::]:9411->9411/tcp, 0.0.0.0:14250->14250/tcp, [::]:14250->14250/tcp, 0.0.0.0:14268-14269->14268-14269/tcp, [::]:14268-14269->14268-14269/tcp, 0.0.0.0:16685-16686->16685-16686/tcp, [::]:16685-16686->16685-16686/tcp, 0.0.0.0:6831-6832->6831-6832/udp, [::]:6831-6832->6831-6832/udp   jaeger
+0efbadd57e94   otel-python-user                  "opentelemetry-instr…"   8 minutes ago    Exited (1) 8 minutes ago                                                                                                                                                                                                                                                                                                                                                                                                                                                                                user
+2e2a48c7ed22   moby/buildkit:buildx-stable-1     "/usr/bin/buildkitd-…"   10 minutes ago   Up 10 minutes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           buildx_buildkit_otelbuilder0
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ docker-compose logs user
+WARN[0000] /home/querinoz/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+user  | Traceback (most recent call last):
+user  |   File "/usr/local/bin/opentelemetry-instrument", line 3, in <module>
+user  |     from opentelemetry.instrumentation.auto_instrumentation import run
+user  |   File "/usr/local/lib/python3.14/site-packages/opentelemetry/instrumentation/auto_instrumentation/__init__.py", line 24, in <module>
+user  |     from pkg_resources import iter_entry_points
+user  | ModuleNotFoundError: No module named 'pkg_resources'
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ docker-compose logs todo
+WARN[0000] /home/querinoz/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+todo  | Traceback (most recent call last):
+todo  |   File "/usr/local/bin/opentelemetry-instrument", line 3, in <module>
+todo  |     from opentelemetry.instrumentation.auto_instrumentation import run
+todo  |   File "/usr/local/lib/python3.14/site-packages/opentelemetry/instrumentation/auto_instrumentation/__init__.py", line 24, in <module>
+todo  |     from pkg_resources import iter_entry_points
+todo  | ModuleNotFoundError: No module named 'pkg_resources'
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ cat user/Dockerfile
+FROM python:latest
+WORKDIR /code
+COPY requirements.txt requirements.txt
+RUN python3 -m venv .venv
+RUN . .venv/bin/activate
+RUN pip install -r requirements.txt
+COPY . .
+CMD [ "opentelemetry-instrument", "python", "-u", "app.py" ]querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ cat user/requirements.txt
+requests
+fastapi
+uvicorn
+opentelemetry-sdk
+opentelemetry-distro==0.43b0
+opentelemetry-instrumentation
+opentelemetry-exporter-jaeger
+opentelemetry-exporter-otlp
+opentelemetry-exporter-otlp-proto-grpc==1.12.0
+opentelemetry-instrumentation-aws-lambda==0.43b0
+opentelemetry-instrumentation-dbapi==0.43b0
+opentelemetry-instrumentation-logging==0.43b0
+opentelemetry-instrumentation-sqlite3==0.43b0
+opentelemetry-instrumentation-urllib==0.43b0
+opentelemetry-instrumentation-wsgi==0.43b0
+opentelemetry-instrumentation-grpc==0.43b0
+opentelemetry-instrumentation-jinja2==0.43b0
+opentelemetry-instrumentation-requests==0.43b0
+opentelemetry-instrumentation-urllib3==0.43b0
+opentelemetry-instrumentation-fastapi==0.43b0
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ cat todo/Dockerfile
+FROM python:latest
+WORKDIR /code
+COPY requirements.txt requirements.txt
+RUN python3 -m venv .venv
+RUN . .venv/bin/activate
+RUN pip install -r requirements.txt
+COPY . .
+CMD [ "opentelemetry-instrument", "python", "-u", "app.py" ]querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ cat todo/requirements.txt
+requests
+fastapi
+uvicorn
+opentelemetry-sdk
+opentelemetry-distro==0.43b0
+opentelemetry-instrumentation
+opentelemetry-exporter-jaeger
+opentelemetry-exporter-otlp
+opentelemetry-exporter-otlp-proto-grpc==1.12.0
+opentelemetry-instrumentation-aws-lambda==0.43b0
+opentelemetry-instrumentation-dbapi==0.43b0
+opentelemetry-instrumentation-logging==0.43b0
+opentelemetry-instrumentation-sqlite3==0.43b0
+opentelemetry-instrumentation-urllib==0.43b0
+opentelemetry-instrumentation-wsgi==0.43b0
+opentelemetry-instrumentation-grpc==0.43b0
+opentelemetry-instrumentation-jinja2==0.43b0
+opentelemetry-instrumentation-requests==0.43b0
+opentelemetry-instrumentation-urllib3==0.43b0
+opentelemetry-instrumentation-fastapi==0.43b0
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ docker-compose down
+WARN[0000] /home/querinoz/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+[+] Running 4/4
+ ✔ Container jaeger             Removed                                                                                                 1.3s 
+ ✔ Container user               Removed                                                                                                 0.0s 
+ ✔ Container todo               Removed                                                                                                 0.0s 
+ ✔ Network otel-python_default  Removed                                                                                                 0.3s 
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ make start
+docker buildx create --name otelbuilder 2>/dev/null || true
+docker buildx use otelbuilder
+docker buildx build user
+[+] Building 38.7s (11/11) FINISHED                                                                             docker-container:otelbuilder
+ => [internal] load build definition from Dockerfile                                                                                    0.0s
+ => => transferring dockerfile: 265B                                                                                                    0.0s
+ => [internal] load metadata for docker.io/library/python:3.11                                                                          1.7s
+ => [internal] load .dockerignore                                                                                                       0.0s
+ => => transferring context: 2B                                                                                                         0.0s
+ => [1/7] FROM docker.io/library/python:3.11@sha256:5062f6c22a2c3b8b3717c642af3852310d9a81c3c2c0fc72449a9a79ef09ae63                    2.6s
+ => => resolve docker.io/library/python:3.11@sha256:5062f6c22a2c3b8b3717c642af3852310d9a81c3c2c0fc72449a9a79ef09ae63                    0.0s
+ => => sha256:c380448934e9e89b6e97e314f2d21c13d73788207dc050206abe91bccfcf38e6 249B / 249B                                              0.3s
+ => => sha256:6cf369abc841afa47f3a93567981f9c1d723f382d7fb9dbeb98b8099bf8b63c5 23.98MB / 23.98MB                                        1.4s
+ => => sha256:5e69c8985c08e44d57de4d2a9908b23fe70ae893e35e66e78afc489f0a6b0f9d 6.09MB / 6.09MB                                          1.4s
+ => => extracting sha256:5e69c8985c08e44d57de4d2a9908b23fe70ae893e35e66e78afc489f0a6b0f9d                                               0.2s
+ => => extracting sha256:6cf369abc841afa47f3a93567981f9c1d723f382d7fb9dbeb98b8099bf8b63c5                                               0.8s
+ => => extracting sha256:c380448934e9e89b6e97e314f2d21c13d73788207dc050206abe91bccfcf38e6                                               0.0s
+ => [internal] load build context                                                                                                       0.0s
+ => => transferring context: 365B                                                                                                       0.0s
+ => [2/7] WORKDIR /code                                                                                                                 0.1s
+ => [3/7] COPY requirements.txt requirements.txt                                                                                        0.0s
+ => [4/7] RUN python3 -m venv .venv                                                                                                     4.0s
+ => [5/7] RUN . .venv/bin/activate                                                                                                      0.1s
+ => [6/7] RUN pip install -r requirements.txt                                                                                          29.9s
+ => [7/7] COPY . .                                                                                                                      0.1s
+WARNING: No output specified with docker-container driver. Build result will only remain in the build cache. To push result image into registry use --push or to load image into docker use --load
+docker buildx build todo
+[+] Building 0.3s (11/11) FINISHED                                                                              docker-container:otelbuilder
+ => [internal] load build definition from Dockerfile                                                                                    0.0s
+ => => transferring dockerfile: 265B                                                                                                    0.0s
+ => [internal] load metadata for docker.io/library/python:3.11                                                                          0.2s
+ => [internal] load .dockerignore                                                                                                       0.0s
+ => => transferring context: 2B                                                                                                         0.0s
+ => [1/7] FROM docker.io/library/python:3.11@sha256:5062f6c22a2c3b8b3717c642af3852310d9a81c3c2c0fc72449a9a79ef09ae63                    0.0s
+ => => resolve docker.io/library/python:3.11@sha256:5062f6c22a2c3b8b3717c642af3852310d9a81c3c2c0fc72449a9a79ef09ae63                    0.0s
+ => [internal] load build context                                                                                                       0.0s
+ => => transferring context: 365B                                                                                                       0.0s
+ => CACHED [2/7] WORKDIR /code                                                                                                          0.0s
+ => CACHED [3/7] COPY requirements.txt requirements.txt                                                                                 0.0s
+ => CACHED [4/7] RUN python3 -m venv .venv                                                                                              0.0s
+ => CACHED [5/7] RUN . .venv/bin/activate                                                                                               0.0s
+ => CACHED [6/7] RUN pip install -r requirements.txt                                                                                    0.0s
+ => [7/7] COPY . .                                                                                                                      0.0s
+WARNING: No output specified with docker-container driver. Build result will only remain in the build cache. To push result image into registry use --push or to load image into docker use --load
+docker-compose up -d
+WARN[0000] /home/querinoz/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+[+] Running 4/4
+ ✔ Network otel-python_default  Created                                                                                                 0.0s 
+ ✔ Container todo               Started                                                                                                 0.3s 
+ ✔ Container jaeger             Started                                                                                                 0.8s 
+ ✔ Container user               Started                                                                                                 0.8s 
+Jaeger UI:    http://localhost:16686
+User service: http://localhost:5000
+Todo service: http://localhost:5001
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ ^C
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ docker ps
+CONTAINER ID   IMAGE                             COMMAND                  CREATED          STATUS          PORTS                                                                                                                                                                                                                                                                                                                                                                                                                                                                        NAMES
+b00aab465f34   jaegertracing/all-in-one:latest   "/go/bin/all-in-one-…"   2 minutes ago    Up 2 minutes    0.0.0.0:4317-4318->4317-4318/tcp, [::]:4317-4318->4317-4318/tcp, 0.0.0.0:5775->5775/udp, [::]:5775->5775/udp, 0.0.0.0:5778->5778/tcp, [::]:5778->5778/tcp, 0.0.0.0:9411->9411/tcp, [::]:9411->9411/tcp, 0.0.0.0:14250->14250/tcp, [::]:14250->14250/tcp, 0.0.0.0:14268-14269->14268-14269/tcp, [::]:14268-14269->14268-14269/tcp, 0.0.0.0:16685-16686->16685-16686/tcp, [::]:16685-16686->16685-16686/tcp, 0.0.0.0:6831-6832->6831-6832/udp, [::]:6831-6832->6831-6832/udp   jaeger
+2e2a48c7ed22   moby/buildkit:buildx-stable-1     "/usr/bin/buildkitd-…"   18 minutes ago   Up 18 minutes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                buildx_buildkit_otelbuilder0
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ docker-compose logs user
+docker-compose logs todo
+WARN[0000] /home/querinoz/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+user  | Traceback (most recent call last):
+user  |   File "/usr/local/bin/opentelemetry-instrument", line 3, in <module>
+user  |     from opentelemetry.instrumentation.auto_instrumentation import run
+user  |   File "/usr/local/lib/python3.14/site-packages/opentelemetry/instrumentation/auto_instrumentation/__init__.py", line 24, in <module>
+user  |     from pkg_resources import iter_entry_points
+user  | ModuleNotFoundError: No module named 'pkg_resources'
+WARN[0000] /home/querinoz/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+todo  | Traceback (most recent call last):
+todo  |   File "/usr/local/bin/opentelemetry-instrument", line 3, in <module>
+todo  |     from opentelemetry.instrumentation.auto_instrumentation import run
+todo  |   File "/usr/local/lib/python3.14/site-packages/opentelemetry/instrumentation/auto_instrumentation/__init__.py", line 24, in <module>
+todo  |     from pkg_resources import iter_entry_points
+todo  | ModuleNotFoundError: No module named 'pkg_resources'
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ docker-compose down -v
+WARN[0000] /home/querinoz/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+[+] Running 4/4
+ ✔ Container todo               Removed                                                                                                 0.0s 
+ ✔ Container jaeger             Removed                                                                                                 1.4s 
+ ✔ Container user               Removed                                                                                                 0.0s 
+ ✔ Network otel-python_default  Removed                                                                                                 0.3s 
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ docker builder prune -af
+Total:  0B
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ docker rmi otel-python-user otel-python-todo -f
+Untagged: otel-python-user:latest
+Deleted: sha256:793661981f946061e74feefb7e60c61bdfb66d03592a92fde7d9a90adfab374f
+Deleted: sha256:fd0e5fdbe3078f9ac062d163a28764953c8c767eb4ff68e6a7604eea5aa7ecdc
+Untagged: otel-python-todo:latest
+Deleted: sha256:59e3319315abc59ffa7edee0e44e5a3e92a96c0a29ced8557b803851b548873f
+Deleted: sha256:53497cf02433173d11c7f511fafafb712c351556098535aa142d3937c94c8df4
+Deleted: sha256:ecfdc7eab99dcd04dee91e48780d2fb8c99d9066af9a14c0e0d4076aa0e3cb25
+Deleted: sha256:3c1619c37b3f52b41df9ab14fd6bdbd9e846d2be2a0f9fcc25a9be563e562924
+Deleted: sha256:541d2d61096e39027bc45d86d7513aacbfba6edf68ad6151f6c24e9a3a97532c
+Deleted: sha256:850f0907b3abc49b1ef24d3d6755fbef24752e6706eb794f1f22cc970c405a75
+Deleted: sha256:c63cbe41efb728e0cf69531a56df3f8a4653315794e7ddb8f113035e7d323e0f
+Deleted: sha256:624c67919af12e20239c03379fbc480d86691fbee483c3a75206468ae45084e8
+Deleted: sha256:b732ed045d81e65fb8c6fb3ffa2bfbc81da71abf7d0bf02d19be2ee35c29b0b7
+Deleted: sha256:fae9632f53761d5e4ce960b667ad11438407f9bb840ad2e9ac25c03dcccb9606
+Deleted: sha256:4a224522dec462ac41d36202130313b6212944b5d01e8c80db502f92fd44cd37
+Deleted: sha256:6b25ad64fd838cd1ea2298fc793803487148759df503082fbc918223836cfeed
+Deleted: sha256:1260f1b61561f5408296040ab151cd4e91c1a49d5abcc7c207f78a347915d3ff
+Deleted: sha256:838e471be07892110fe998f879652b240b92fb1ad5cb4a91a39e8c4c9ddc94e0
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ make start
+docker buildx create --name otelbuilder 2>/dev/null || true
+docker buildx use otelbuilder
+docker buildx build user
+[+] Building 1.1s (11/11) FINISHED                                                                              docker-container:otelbuilder
+ => [internal] load build definition from Dockerfile                                                                                    0.0s
+ => => transferring dockerfile: 265B                                                                                                    0.0s
+ => [internal] load metadata for docker.io/library/python:3.11                                                                          1.0s
+ => [internal] load .dockerignore                                                                                                       0.0s
+ => => transferring context: 2B                                                                                                         0.0s
+ => [1/7] FROM docker.io/library/python:3.11@sha256:5062f6c22a2c3b8b3717c642af3852310d9a81c3c2c0fc72449a9a79ef09ae63                    0.0s
+ => => resolve docker.io/library/python:3.11@sha256:5062f6c22a2c3b8b3717c642af3852310d9a81c3c2c0fc72449a9a79ef09ae63                    0.0s
+ => [internal] load build context                                                                                                       0.0s
+ => => transferring context: 132B                                                                                                       0.0s
+ => CACHED [2/7] WORKDIR /code                                                                                                          0.0s
+ => CACHED [3/7] COPY requirements.txt requirements.txt                                                                                 0.0s
+ => CACHED [4/7] RUN python3 -m venv .venv                                                                                              0.0s
+ => CACHED [5/7] RUN . .venv/bin/activate                                                                                               0.0s
+ => CACHED [6/7] RUN pip install -r requirements.txt                                                                                    0.0s
+ => CACHED [7/7] COPY . .                                                                                                               0.0s
+WARNING: No output specified with docker-container driver. Build result will only remain in the build cache. To push result image into registry use --push or to load image into docker use --load
+docker buildx build todo
+[+] Building 0.3s (11/11) FINISHED                                                                              docker-container:otelbuilder
+ => [internal] load build definition from Dockerfile                                                                                    0.0s
+ => => transferring dockerfile: 265B                                                                                                    0.0s
+ => [internal] load metadata for docker.io/library/python:3.11                                                                          0.2s
+ => [internal] load .dockerignore                                                                                                       0.0s
+ => => transferring context: 2B                                                                                                         0.0s
+ => [1/7] FROM docker.io/library/python:3.11@sha256:5062f6c22a2c3b8b3717c642af3852310d9a81c3c2c0fc72449a9a79ef09ae63                    0.0s
+ => => resolve docker.io/library/python:3.11@sha256:5062f6c22a2c3b8b3717c642af3852310d9a81c3c2c0fc72449a9a79ef09ae63                    0.0s
+ => [internal] load build context                                                                                                       0.0s
+ => => transferring context: 132B                                                                                                       0.0s
+ => CACHED [2/7] WORKDIR /code                                                                                                          0.0s
+ => CACHED [3/7] COPY requirements.txt requirements.txt                                                                                 0.0s
+ => CACHED [4/7] RUN python3 -m venv .venv                                                                                              0.0s
+ => CACHED [5/7] RUN . .venv/bin/activate                                                                                               0.0s
+ => CACHED [6/7] RUN pip install -r requirements.txt                                                                                    0.0s
+ => CACHED [7/7] COPY . .                                                                                                               0.0s
+WARNING: No output specified with docker-container driver. Build result will only remain in the build cache. To push result image into registry use --push or to load image into docker use --load
+docker-compose up -d
+WARN[0000] /home/querinoz/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+[+] Building 33.6s (26/26) FINISHED                                                                                                          
+ => [internal] load local bake definitions                                                                                              0.0s
+ => => reading from stdin 1.23kB                                                                                                        0.0s
+ => [user internal] load build definition from Dockerfile                                                                               0.0s
+ => => transferring dockerfile: 265B                                                                                                    0.0s
+ => [todo internal] load build definition from Dockerfile                                                                               0.0s
+ => => transferring dockerfile: 265B                                                                                                    0.0s
+ => [todo internal] load metadata for docker.io/library/python:3.11                                                                     0.2s
+ => [user internal] load .dockerignore                                                                                                  0.0s
+ => => transferring context: 2B                                                                                                         0.0s
+ => [todo internal] load .dockerignore                                                                                                  0.0s
+ => => transferring context: 2B                                                                                                         0.0s
+ => [todo 1/7] FROM docker.io/library/python:3.11@sha256:5062f6c22a2c3b8b3717c642af3852310d9a81c3c2c0fc72449a9a79ef09ae63               0.0s
+ => => resolve docker.io/library/python:3.11@sha256:5062f6c22a2c3b8b3717c642af3852310d9a81c3c2c0fc72449a9a79ef09ae63                    0.0s
+ => [todo internal] load build context                                                                                                  0.0s
+ => => transferring context: 132B                                                                                                       0.0s
+ => [user internal] load build context                                                                                                  0.0s
+ => => transferring context: 132B                                                                                                       0.0s
+ => CACHED [todo 2/7] WORKDIR /code                                                                                                     0.0s
+ => CACHED [user 3/7] COPY requirements.txt requirements.txt                                                                            0.0s
+ => CACHED [user 4/7] RUN python3 -m venv .venv                                                                                         0.0s
+ => CACHED [user 5/7] RUN . .venv/bin/activate                                                                                          0.0s
+ => CACHED [user 6/7] RUN pip install -r requirements.txt                                                                               0.0s
+ => CACHED [user 7/7] COPY . .                                                                                                          0.0s
+ => CACHED [todo 3/7] COPY requirements.txt requirements.txt                                                                            0.0s
+ => CACHED [todo 4/7] RUN python3 -m venv .venv                                                                                         0.0s
+ => CACHED [todo 5/7] RUN . .venv/bin/activate                                                                                          0.0s
+ => CACHED [todo 6/7] RUN pip install -r requirements.txt                                                                               0.0s
+ => CACHED [todo 7/7] COPY . .                                                                                                          0.0s
+ => [todo] exporting to docker image format                                                                                            33.1s
+ => => exporting layers                                                                                                                 2.1s
+ => => exporting manifest sha256:ef07a0e79b299c5ebaa3276931418dada5629246f1352255bb078b6fe8a2626e                                       0.0s
+ => => exporting config sha256:d55b080eaf70adcd2136ed4430b9a951d2e5582f9dd7e343aa0a10a97128914e                                         0.0s
+ => => sending tarball                                                                                                                 30.9s
+ => [user] exporting to docker image format                                                                                            32.2s
+ => => exporting layers                                                                                                                 2.1s
+ => => exporting manifest sha256:bdddd7c8f8416094bbec8ae3178cf59b4c1972b76537e0352226aef119d1ab5f                                       0.0s
+ => => exporting config sha256:fd288d4daa6d449da0e85be1f4738f5940ea2df80a386e5c6ca3e6f3f252ff69                                         0.0s
+ => => sending tarball                                                                                                                 30.0s
+ => importing to docker                                                                                                                25.5s
+ => => loading layer 838e471be078 49.30MB / 49.30MB                                                                                    25.5s
+ => => loading layer cb623b1a45c4 25.62MB / 25.62MB                                                                                    19.8s
+ => => loading layer 8facc29b1c2c 67.79MB / 67.79MB                                                                                    18.8s
+ => => loading layer acc5d3132418 236.07MB / 236.07MB                                                                                  15.2s
+ => => loading layer d15fc1752b97 6.09MB / 6.09MB                                                                                       5.7s
+ => => loading layer 44e4a5c75715 23.98MB / 23.98MB                                                                                     5.2s
+ => => loading layer dd6c88c787ac 249B / 249B                                                                                           4.0s
+ => => loading layer 43ba53c1b460 94B / 94B                                                                                             3.9s
+ => => loading layer c17b280b0c02 312B / 312B                                                                                           3.9s
+ => => loading layer dc8f77a9d1e2 9.78MB / 9.78MB                                                                                       3.9s
+ => => loading layer 5f70bf18a086 32B / 32B                                                                                             2.8s
+ => => loading layer f40bb026e647 35.06MB / 35.06MB                                                                                     2.7s
+ => => loading layer 000d204bf184 1.03kB / 1.03kB                                                                                       0.2s
+ => importing to docker                                                                                                                26.5s
+ => => loading layer 838e471be078 49.30MB / 49.30MB                                                                                    26.5s
+ => => loading layer cb623b1a45c4 25.62MB / 25.62MB                                                                                    20.6s
+ => => loading layer 8facc29b1c2c 67.79MB / 67.79MB                                                                                    19.5s
+ => => loading layer acc5d3132418 236.07MB / 236.07MB                                                                                  15.6s
+ => => loading layer 44e4a5c75715 23.98MB / 23.98MB                                                                                     5.5s
+ => => loading layer dc8f77a9d1e2 9.78MB / 9.78MB                                                                                       4.2s
+ => => loading layer f40bb026e647 35.06MB / 35.06MB                                                                                     3.0s
+ => => loading layer 47f8bea1f65b 1.18kB / 1.18kB                                                                                       0.2s
+ => [user] resolving provenance for metadata file                                                                                       0.0s
+ => [todo] resolving provenance for metadata file                                                                                       0.0s
+[+] Running 6/6
+ ✔ otel-python-user             Built                                                                                                   0.0s 
+ ✔ otel-python-todo             Built                                                                                                   0.0s 
+ ✔ Network otel-python_default  Created                                                                                                 0.1s 
+ ✔ Container jaeger             Started                                                                                                 2.1s 
+ ✔ Container user               Started                                                                                                 2.2s 
+ ✔ Container todo               Started                                                                                                 2.2s 
+Jaeger UI:    http://localhost:16686
+User service: http://localhost:5000
+Todo service: http://localhost:5001
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ docker ps
+CONTAINER ID   IMAGE                             COMMAND                  CREATED          STATUS          PORTS                                                                                                                                                                                                                                                                                                                                                                                                                                                                        NAMES
+9887d322a653   otel-python-todo                  "opentelemetry-instr…"   47 seconds ago   Up 46 seconds   0.0.0.0:5001->5000/tcp, [::]:5001->5000/tcp                                                                                                                                                                                                                                                                                                                                                                                                                                  todo
+88e39dec181b   otel-python-user                  "opentelemetry-instr…"   47 seconds ago   Up 46 seconds   0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp                                                                                                                                                                                                                                                                                                                                                                                                                                  user
+e8ac67bc9cd1   jaegertracing/all-in-one:latest   "/go/bin/all-in-one-…"   47 seconds ago   Up 46 seconds   0.0.0.0:4317-4318->4317-4318/tcp, [::]:4317-4318->4317-4318/tcp, 0.0.0.0:5775->5775/udp, [::]:5775->5775/udp, 0.0.0.0:5778->5778/tcp, [::]:5778->5778/tcp, 0.0.0.0:9411->9411/tcp, [::]:9411->9411/tcp, 0.0.0.0:14250->14250/tcp, [::]:14250->14250/tcp, 0.0.0.0:14268-14269->14268-14269/tcp, [::]:14268-14269->14268-14269/tcp, 0.0.0.0:16685-16686->16685-16686/tcp, [::]:16685-16686->16685-16686/tcp, 0.0.0.0:6831-6832->6831-6832/udp, [::]:6831-6832->6831-6832/udp   jaeger
+2e2a48c7ed22   moby/buildkit:buildx-stable-1     "/usr/bin/buildkitd-…"   22 minutes ago   Up 22 minutes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                buildx_buildkit_otelbuilder0
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ make clean
+docker-compose down
+WARN[0000] /home/querinoz/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+[+] Running 4/4
+ ✔ Container user               Removed                                                                                                 1.6s 
+ ✔ Container jaeger             Removed                                                                                                 1.5s 
+ ✔ Container todo               Removed                                                                                                 1.8s 
+ ✔ Network otel-python_default  Removed                                                                                                 0.3s 
+docker buildx rm otelbuilder 2>/dev/null || true
+docker buildx prune -f
+Total:  0B
+docker stop $(docker ps -qa) 2>/dev/null || true
+docker system prune -af --volumes
+Deleted Volumes:
+7fce28c0d81756e12970dda07b0668007db1531c2aecfbc174cadd353259d121
+23cfe3c243c850d1d5930036e4e784119ebbcb284673a52aef3b9c99fda91172
+
+Deleted Images:
+untagged: jaegertracing/all-in-one:latest
+untagged: jaegertracing/all-in-one@sha256:ab6f1a1f0fb49ea08bcd19f6b84f6081d0d44b364b6de148e1798eb5816bacac
+deleted: sha256:b0d7a1169c4ca6b61d502adc1c35deafa3ad96a129b872b9ee74606dbeba7833
+deleted: sha256:cf30977f78da4f01f0a733e06a3b12cf284d7a18b3251f4961d270a3cda50570
+deleted: sha256:b3684959dc82ed6efb1dfc247c7de985b4365adecf170fb6306af0bcdaeb48be
+deleted: sha256:c1c5aad14bc98ac160b092de42a515ce77011e5d043bc7c75a530b165980117e
+deleted: sha256:6588036dc6f46fe6d7b4a1d26ff666715a6db7d65fd5043a0270048a907fd521
+deleted: sha256:256f393e029fa2063d8c93720da36a74a032bed3355a2bc3e313ad12f8bde9d1
+untagged: otel-python-user:latest
+deleted: sha256:fd288d4daa6d449da0e85be1f4738f5940ea2df80a386e5c6ca3e6f3f252ff69
+deleted: sha256:ef55be79fd62708f3a9408dd8721bc465d1367d1385cd19f673ba2140a3befd0
+untagged: otel-python-todo:latest
+deleted: sha256:d55b080eaf70adcd2136ed4430b9a951d2e5582f9dd7e343aa0a10a97128914e
+deleted: sha256:f692a0bbaad18bc4cdc9a6e04a8deeb9de839165090a07938da49c3bd4a7ec76
+deleted: sha256:a8609d076e51f324407ab69840ec5dd928869ba4355e2eeceab120638889c981
+deleted: sha256:f2dcd24d365f9b4a6dd0149fb8bb7beed248d3963d130a12f47cacd67391bf3b
+deleted: sha256:3705dc3b3fea808cbdd21e8041ba8cf11107acb3f5a705f160661071994d51d6
+deleted: sha256:94e71ba555047f7ac26795fec88513e102ae73490078b506c1bb292cd36a7a4e
+deleted: sha256:b2954f882b61df223913a335caa6030119198caa9173655fd1a997fe18188b3c
+deleted: sha256:6987db144010be6489376951d3d76279570e0d990f9064e3fe167dd73880d49f
+deleted: sha256:5df69e660cca5f405cc4b95d996e895dd77d8daebb34f1a89a29014c7a509b84
+deleted: sha256:ae844c33ccc045af0703622aecc9a10129d9e2571beb4b1119d705b972ddb7ce
+deleted: sha256:4a224522dec462ac41d36202130313b6212944b5d01e8c80db502f92fd44cd37
+deleted: sha256:6b25ad64fd838cd1ea2298fc793803487148759df503082fbc918223836cfeed
+deleted: sha256:1260f1b61561f5408296040ab151cd4e91c1a49d5abcc7c207f78a347915d3ff
+deleted: sha256:838e471be07892110fe998f879652b240b92fb1ad5cb4a91a39e8c4c9ddc94e0
+untagged: moby/buildkit:buildx-stable-1
+untagged: moby/buildkit@sha256:0039c1d47e8748b5afea56f4e85f14febaf34452bd99d9552d2daa82262b5cc5
+deleted: sha256:e03746490b6176560985509bae72c2b9476bf98f499dace50bc8515d212190c3
+deleted: sha256:b18cf2696942251b80c5d7435fca6e01537c17121e9733b343fde938b75c5d20
+deleted: sha256:b3f35aa235f80dc19fb775001b24a5ddb4418631fb082eeb617d6524e835f233
+deleted: sha256:48bf8ccc8864146ba9560159c3e10061d980bdfe3bbcabb06aa450ef2c09e7f4
+deleted: sha256:06d88b686f2d1fa3599f4dfca4672a2ad2b2f939a7701b2eade4c390bba12a4e
+deleted: sha256:ced2e430b0b4d3c5355d4c28258dd8c439e1bef3898fe79a1fcc65b781b7c52a
+deleted: sha256:f35f211108c8b6ade28f6914e93e4fe87d058f34e3794f6989aad176e7e6784f
+deleted: sha256:989e799e634906e94dc9a5ee2ee26fc92ad260522990f26e707861a5f52bf64e
+
+Total reclaimed space: 1.527GB
+docker network prune -f
+docker volume prune -af
+Total reclaimed space: 0B
+docker builder prune -af
+Total:  0B
+docker system df
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          0         0         0B        0B
+Containers      0         0         0B        0B
+Local Volumes   0         0         0B        0B
+Build Cache     0         0         0B        0B
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa19-M8_T1/otel-python$ 

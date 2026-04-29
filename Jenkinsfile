@@ -1,0 +1,78 @@
+pipeline {
+    agent any 
+
+    environment {
+        // IDs de build para taguear imagens se necessário no futuro
+        DOCKER_IMAGE_A = "service-a:${env.BUILD_ID}"
+        DOCKER_IMAGE_B = "service-b:${env.BUILD_ID}"
+    }
+
+    stages {
+        stage('DEV - Testing') {
+            steps {
+                dir('devops/tokioschool/devops-microservices-project') {
+                    sh '''
+                    chmod +x ./run-tests.sh
+                    ./run-tests.sh
+                    '''
+                }
+            }
+        }
+
+        stage('STG - Build & Orchestrate') {
+            steps {
+                dir('devops/tokioschool/devops-microservices-project') {
+                    script {
+                        // Tenta buildar e subir o ambiente de staging
+                        sh 'docker compose build || docker-compose build'
+                        sh 'docker compose up -d || docker-compose up -d'
+                    }
+                }
+            }
+        }
+
+        stage('Aprovação Manual') {
+            steps {
+                script {
+                    // Pausa o pipeline e aguarda clique no Blue Ocean ou interface clássica
+                    input message: "Deseja promover o build para Produção?", ok: "Fazer Deploy!"
+                }
+            }
+        }
+
+        stage('PRD - Deployment') {
+            steps {
+                dir('devops/tokioschool/devops-microservices-project') {
+                    script {
+                        echo "Iniciando Deploy final e Verificação de Saúde..."
+                        
+                        // Tempo para o Gunicorn (Python) terminar de subir
+                        sh 'sleep 15' 
+                        
+                        echo "Validando Service A..."
+                        // O comando roda DENTRO do container service-a
+                        sh 'docker compose exec -T service-a curl -f http://localhost:8001/health'
+                        
+                        echo "Validando Service B..."
+                        // O comando roda DENTRO do container service-b
+                        sh 'docker compose exec -T service-b curl -f http://localhost:8002/health'
+                        
+                        echo "Deploy realizado com sucesso em Produção!"
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo "Pipeline finalizado. Status: ${currentBuild.result}"
+        }
+        success {
+            echo "O projeto está online e os traces estão disponíveis no Jaeger!"
+        }
+        failure {
+            echo "Ocorreu um erro no pipeline. Verifique os logs acima."
+        }
+    }
+}

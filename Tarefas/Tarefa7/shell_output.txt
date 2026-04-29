@@ -1,0 +1,82 @@
+querinoz@Querino:~$
+querinoz@Querino:~$
+querinoz@Querino:~$ ping www.google.com
+PING www.google.com (142.251.155.119) 56(84) bytes of data.
+64 bytes from 142.251.155.119 (142.251.155.119): icmp_seq=1 ttl=116 time=45.1 ms
+64 bytes from 142.251.155.119 (142.251.155.119): icmp_seq=2 ttl=116 time=38.1 ms
+64 bytes from 142.251.155.119 (142.251.155.119): icmp_seq=3 ttl=116 time=30.1 ms
+^C
+--- www.google.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 1999ms
+rtt min/avg/max/mdev = 30.124/37.773/45.061/6.103 ms
+querinoz@Querino:~$ ip route
+default via 172.19.192.1 dev eth0 proto kernel
+172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
+172.18.0.0/16 dev br-abc58f010469 proto kernel scope link src 172.18.0.1 linkdown
+172.19.192.0/20 dev eth0 proto kernel scope link src 172.19.197.43
+172.20.0.0/16 dev br-ac92d2c59498 proto kernel scope link src 172.20.0.1 linkdown
+172.22.0.0/16 dev br-16f588e8e732 proto kernel scope link src 172.22.0.1 linkdown
+querinoz@Querino:~$ ping 172.19.192.1
+PING 172.19.192.1 (172.19.192.1) 56(84) bytes of data.
+^C
+--- 172.19.192.1 ping statistics ---
+8 packets transmitted, 0 received, 100% packet loss, time 7424ms
+
+querinoz@Querino:~$ tracepath 172.19.192.1
+ 1?: [LOCALHOST]                      pmtu 1500
+ 1:  no reply
+ 2:  no reply
+^C
+querinoz@Querino:~$ tracepath _gateway
+^C
+querinoz@Querino:~$ tracepath www.google.com
+ 1?: [LOCALHOST]                      pmtu 1500
+ 1:  Querino.mshome.net                                    0.330ms
+ 1:  Querino.mshome.net                                    0.259ms
+ 2:  routertecnico.home                                   93.177ms
+ 3:  10.19.127.254                                        97.181ms
+ 4:  10.137.211.225                                       90.152ms
+ 5:  10.255.48.86                                         89.880ms
+ 6:  no reply
+^C
+querinoz@Querino:~$ udo tcpdump -i eth0 port 53
+Command 'udo' not found, but can be installed with:
+sudo apt install udo
+querinoz@Querino:~$ sudo tcpdump -i eth0 port 53
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+^C
+0 packets captured
+0 packets received by filter
+0 packets dropped by kernel
+querinoz@Querino:~$  sudo tcpdump -i enp0s3 icmp
+tcpdump: enp0s3: No such device exists
+(SIOCGIFHWADDR: No such device)
+querinoz@Querino:~$  sudo tcpdump -i eth0 icmp
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+^C
+0 packets captured
+0 packets received by filter
+0 packets dropped by kernel
+querinoz@Querino:~$ sudo apt install traceroute -y
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+traceroute is already the newest version (1:2.1.0-2).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+querinoz@Querino:~$ traceroute _gateway
+_gateway: Temporary failure in name resolution
+Cannot handle "host" cmdline arg `_gateway' on position 1 (argc 1)
+querinoz@Querino:~$ ^C
+querinoz@Querino:~$ traceroute www.google.com
+traceroute to www.google.com (142.251.150.119), 30 hops max, 60 byte packets
+ 1  Querino.mshome.net (172.19.192.1)  0.846 ms  0.766 ms  0.728 ms
+ 2  routertecnico.home (192.168.1.1)  190.320 ms  190.257 ms  190.217 ms
+ 3  10.19.127.254 (10.19.127.254)  189.927 ms  207.526 ms  288.778 ms
+ 4  10.137.211.241 (10.137.211.241)  203.296 ms  288.668 ms  288.591 ms
+ 5  10.255.48.74 (10.255.48.74)  396.643 ms 10.255.48.78 (10.255.48.78)  288.501 ms  288.461 ms
+ 6  * * *
+ 7  * * *
+ 8  142.251.150.119 (142.251.150.119)  88.503 ms  88.454 ms  83.897 ms
+querinoz@Querino:~$

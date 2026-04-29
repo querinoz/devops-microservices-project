@@ -1,0 +1,39 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: 'devops-microservices'
+    environment: 'production'
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'service-a'
+    static_configs:
+      - targets: ['service-a:8001']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+
+  - job_name: 'service-b'
+    static_configs:
+      - targets: ['service-b:8002']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+
+  - job_name: 'docker'
+    static_configs:
+      - targets: ['docker-exporter:9323']
+
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ['alertmanager:9093']
+
+rule_files:
+  - '/etc/prometheus/alert_rules.yml'

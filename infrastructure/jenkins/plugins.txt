@@ -1,0 +1,60 @@
+# Jenkins Plugins Required for DevOps Microservices Project
+
+## Essential Plugins
+
+### Version Control
+- git:latest
+- github:latest
+- github-branch-source:latest
+
+### Build & Deploy
+- docker-plugin:latest
+- docker-workflow:latest
+- docker-build-step:latest
+
+### Pipeline
+- workflow-aggregator:latest
+- pipeline-stage-view:latest
+- pipeline-graph-analysis:latest
+
+### Testing & Quality
+- junit:latest
+- htmlpublisher:latest
+- cobertura:latest
+- performance:latest
+
+### Notifications
+- email-ext:latest
+- slack:latest (optional)
+
+### Credentials
+- credentials-binding:latest
+- ssh-credentials:latest
+
+### Optional but Recommended
+- blue-ocean:latest
+- prometheus:latest
+- disk-usage:latest
+- build-timeout:latest
+
+## Installation via Jenkins CLI
+
+```bash
+# Install plugins via CLI
+jenkins-cli -s http://localhost:8080/ install-plugin \
+  git \
+  github \
+  docker-plugin \
+  docker-workflow \
+  workflow-aggregator \
+  junit \
+  htmlpublisher \
+  credentials-binding
+```
+
+## Installation via UI
+
+1. Navigate to: Manage Jenkins → Manage Plugins
+2. Go to "Available" tab
+3. Search and select plugins from the list above
+4. Click "Install without restart"

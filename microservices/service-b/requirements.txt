@@ -1,0 +1,11 @@
+Flask<2.4
+Werkzeug<3.0
+flask-cors
+jaeger-client
+flask-opentracing
+requests
+pytest
+pytest-cov
+pytest-flask
+six
+gunicorn

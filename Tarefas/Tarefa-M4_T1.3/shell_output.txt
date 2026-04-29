@@ -1,0 +1,806 @@
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3$ ls -la
+total 20
+drwxr-xr-x  3 querinoz querinoz 4096 Apr 19 13:51 .
+drwxr-xr-x 16 querinoz querinoz 4096 Apr 19 13:49 ..
+-rw-r--r--  1 querinoz querinoz 2601 Apr  1  2024 Makefile
+-rw-r--r--  1 querinoz querinoz 2994 Mar 31  2024 compose_puppet.yaml
+drwxr-xr-x  2 querinoz querinoz 4096 Mar 31  2024 postgresql_init
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3$ make start_puppet_server
+docker-compose -f compose_puppet.yaml up -d
+WARN[0000] The "REGISTRY_PATH" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "REGISTRY_PATH" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "POSTGRES_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "POSTGRES_DB" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "REGISTRY_PATH" variable is not set. Defaulting to a blank string. 
+WARN[0000] /home/querinoz/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3/compose_puppet.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+[+] Running 1/4
+ ! postgres            Interrupted                                                                                                      0.0s 
+ ⠋ puppetboard Pulling                                                                                                                  0.0s 
+ ⠋ puppet Pulling                                                                                                                       0.0s 
+ ⠋ puppetdb Pulling                                                                                                                     0.0s 
+invalid reference format
+make: *** [Makefile:7: start_puppet_server] Error 1
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3$ make start_puppet_server
+REGISTRY_PATH="ghcr.io/voxpupuli" \
+POSTGRES_USER=puppetdb \
+POSTGRES_PASSWORD=puppetdb \
+POSTGRES_DB=puppetdb \
+docker-compose -f compose_puppet.yaml up -d
+[+] Running 50/50
+ ✔ postgres Pulled                                                                                                                     23.3s 
+ ✔ puppetboard Pulled                                                                                                                  28.1s 
+ ✔ puppet Pulled                                                                                                                       34.2s 
+ ✔ puppetdb Pulled                                                                                                                     42.7s 
+[+] Running 10/10
+ ✔ Network crafty-oss                      Created                                                                                      0.0s 
+ ✔ Volume tarefa-m4_t13_puppetserver       Created                                                                                      0.0s 
+ ✔ Volume tarefa-m4_t13_puppetserver-ssl   Created                                                                                      0.0s 
+ ✔ Volume tarefa-m4_t13_puppetserver-ca    Created                                                                                      0.0s 
+ ✔ Volume tarefa-m4_t13_puppetdb           Created                                                                                      0.0s 
+ ✔ Volume tarefa-m4_t13_puppetdb-postgres  Created                                                                                      0.0s 
+ ✔ Container tarefa-m4_t13-postgres-1      Started                                                                                      3.7s 
+ ✔ Container tarefa-m4_t13-puppet-1        Started                                                                                      3.8s 
+ ✔ Container tarefa-m4_t13-puppetdb-1      Started                                                                                      0.7s 
+ ✔ Container tarefa-m4_t13-puppetboard-1   Started                                                                                      1.0s 
+
+CONTAINER ID   IMAGE                                                   COMMAND                  CREATED         STATUS                                     PORTS                                                                                          NAMES
+834288c8945c   ghcr.io/voxpupuli/puppetboard:latest                    "/bin/sh -c 'gunicor…"   1 second ago    Up Less than a second (health: starting)   80/tcp, 0.0.0.0:8088->8088/tcp, [::]:8088->8088/tcp                                            tarefa-m4_t13-puppetboard-1
+f9439af18755   ghcr.io/voxpupuli/container-puppetdb:8.3.0-latest       "dumb-init /docker-e…"   1 second ago    Up Less than a second (health: starting)   8080/tcp, 0.0.0.0:8081->8081/tcp, [::]:8081->8081/tcp                                          tarefa-m4_t13-puppetdb-1
+225cdb8f03d1   ghcr.io/voxpupuli/container-puppetserver:8.4.0-latest   "dumb-init /docker-e…"   5 seconds ago   Up Less than a second (health: starting)   0.0.0.0:8140->8140/tcp, [::]:8140->8140/tcp                                                    tarefa-m4_t13-puppet-1
+10e99852e8aa   postgres:16-alpine                                      "docker-entrypoint.s…"   5 seconds ago   Up Less than a second (health: starting)   5432/tcp                                                                                       tarefa-m4_t13-postgres-1
+c16094107f96   myjenkins-blueocean:latest                              "/usr/bin/tini -- /u…"   3 days ago      Up 2 hours                                 0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp, 0.0.0.0:50000->50000/tcp, [::]:50000->50000/tcp   jenkins-blueocean
+
+open puppetboard: http://127.0.0.1:8088
+open puppetdb: https://127.0.0.1:8081
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3$ docker ps
+CONTAINER ID   IMAGE                                                   COMMAND                  CREATED              STATUS                          PORTS                                                                                          NAMES
+834288c8945c   ghcr.io/voxpupuli/puppetboard:latest                    "/bin/sh -c 'gunicor…"   About a minute ago   Restarting (2) 22 seconds ago                                                                                                  tarefa-m4_t13-puppetboard-1
+f9439af18755   ghcr.io/voxpupuli/container-puppetdb:8.3.0-latest       "dumb-init /docker-e…"   About a minute ago   Up About a minute (healthy)     8080/tcp, 0.0.0.0:8081->8081/tcp, [::]:8081->8081/tcp                                          tarefa-m4_t13-puppetdb-1
+225cdb8f03d1   ghcr.io/voxpupuli/container-puppetserver:8.4.0-latest   "dumb-init /docker-e…"   About a minute ago   Up About a minute (healthy)     0.0.0.0:8140->8140/tcp, [::]:8140->8140/tcp                                                    tarefa-m4_t13-puppet-1
+10e99852e8aa   postgres:16-alpine                                      "docker-entrypoint.s…"   About a minute ago   Up About a minute (healthy)     5432/tcp                                                                                       tarefa-m4_t13-postgres-1
+c16094107f96   myjenkins-blueocean:latest                              "/usr/bin/tini -- /u…"   3 days ago           Up 2 hours                      0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp, 0.0.0.0:50000->50000/tcp, [::]:50000->50000/tcp   jenkins-blueocean
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3$ docker ps
+CONTAINER ID   IMAGE                                                   COMMAND                  CREATED              STATUS                        PORTS                                                                                          NAMES
+834288c8945c   ghcr.io/voxpupuli/puppetboard:latest                    "/bin/sh -c 'gunicor…"   About a minute ago   Up 21 seconds (healthy)       80/tcp, 0.0.0.0:8088->8088/tcp, [::]:8088->8088/tcp                                            tarefa-m4_t13-puppetboard-1
+f9439af18755   ghcr.io/voxpupuli/container-puppetdb:8.3.0-latest       "dumb-init /docker-e…"   About a minute ago   Up About a minute (healthy)   8080/tcp, 0.0.0.0:8081->8081/tcp, [::]:8081->8081/tcp                                          tarefa-m4_t13-puppetdb-1
+225cdb8f03d1   ghcr.io/voxpupuli/container-puppetserver:8.4.0-latest   "dumb-init /docker-e…"   About a minute ago   Up About a minute (healthy)   0.0.0.0:8140->8140/tcp, [::]:8140->8140/tcp                                                    tarefa-m4_t13-puppet-1
+10e99852e8aa   postgres:16-alpine                                      "docker-entrypoint.s…"   About a minute ago   Up About a minute (healthy)   5432/tcp                                                                                       tarefa-m4_t13-postgres-1
+c16094107f96   myjenkins-blueocean:latest                              "/usr/bin/tini -- /u…"   3 days ago           Up 2 hours                    0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp, 0.0.0.0:50000->50000/tcp, [::]:50000->50000/tcp   jenkins-blueocean
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3$ ^C
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3$ make start_puppet_agent
+docker run --name puppet_agent -it -d --network crafty-oss --platform linux/amd64 ghcr.io/betadots/pdc:latest sh -c 'while [ 1 ];do sleep 30;done;'
+Unable to find image 'ghcr.io/betadots/pdc:latest' locally
+latest: Pulling from betadots/pdc
+9cb31e2e37ea: Pull complete 
+8874773ff1ef: Pull complete 
+9b2d84335313: Pull complete 
+72d93c356c07: Pull complete 
+a8deed0c2c1b: Pull complete 
+220735b9dc96: Pull complete 
+33171f34a2a2: Pull complete 
+6c407865aaa4: Pull complete 
+Digest: sha256:e012f5dffcde6fab1af3d6ac57ea9ceabba251f0fc742bda3cbd3cb04dae9bdd
+Status: Downloaded newer image for ghcr.io/betadots/pdc:latest
+9a219980fc1fb6a2f913b2474b02292dccc8f6d248d8fc90a175c80316b81462
+
+CONTAINER ID   IMAGE                                                   COMMAND                  CREATED         STATUS                   PORTS                                                                                          NAMES
+9a219980fc1f   ghcr.io/betadots/pdc:latest                             "sh -c 'while [ 1 ];…"   2 seconds ago   Up Less than a second                                                                                                   puppet_agent
+834288c8945c   ghcr.io/voxpupuli/puppetboard:latest                    "/bin/sh -c 'gunicor…"   5 minutes ago   Up 4 minutes (healthy)   80/tcp, 0.0.0.0:8088->8088/tcp, [::]:8088->8088/tcp                                            tarefa-m4_t13-puppetboard-1
+f9439af18755   ghcr.io/voxpupuli/container-puppetdb:8.3.0-latest       "dumb-init /docker-e…"   5 minutes ago   Up 5 minutes (healthy)   8080/tcp, 0.0.0.0:8081->8081/tcp, [::]:8081->8081/tcp                                          tarefa-m4_t13-puppetdb-1
+225cdb8f03d1   ghcr.io/voxpupuli/container-puppetserver:8.4.0-latest   "dumb-init /docker-e…"   5 minutes ago   Up 5 minutes (healthy)   0.0.0.0:8140->8140/tcp, [::]:8140->8140/tcp                                                    tarefa-m4_t13-puppet-1
+10e99852e8aa   postgres:16-alpine                                      "docker-entrypoint.s…"   5 minutes ago   Up 5 minutes (healthy)   5432/tcp                                                                                       tarefa-m4_t13-postgres-1
+c16094107f96   myjenkins-blueocean:latest                              "/usr/bin/tini -- /u…"   3 days ago      Up 2 hours               0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp, 0.0.0.0:50000->50000/tcp, [::]:50000->50000/tcp   jenkins-blueocean
+
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3$ docker ps
+CONTAINER ID   IMAGE                                                   COMMAND                  CREATED          STATUS                   PORTS                                                                                          NAMES
+9a219980fc1f   ghcr.io/betadots/pdc:latest                             "sh -c 'while [ 1 ];…"   12 seconds ago   Up 10 seconds                                                                                                           puppet_agent
+834288c8945c   ghcr.io/voxpupuli/puppetboard:latest                    "/bin/sh -c 'gunicor…"   5 minutes ago    Up 4 minutes (healthy)   80/tcp, 0.0.0.0:8088->8088/tcp, [::]:8088->8088/tcp                                            tarefa-m4_t13-puppetboard-1
+f9439af18755   ghcr.io/voxpupuli/container-puppetdb:8.3.0-latest       "dumb-init /docker-e…"   5 minutes ago    Up 5 minutes (healthy)   8080/tcp, 0.0.0.0:8081->8081/tcp, [::]:8081->8081/tcp                                          tarefa-m4_t13-puppetdb-1
+225cdb8f03d1   ghcr.io/voxpupuli/container-puppetserver:8.4.0-latest   "dumb-init /docker-e…"   5 minutes ago    Up 5 minutes (healthy)   0.0.0.0:8140->8140/tcp, [::]:8140->8140/tcp                                                    tarefa-m4_t13-puppet-1
+10e99852e8aa   postgres:16-alpine                                      "docker-entrypoint.s…"   5 minutes ago    Up 5 minutes (healthy)   5432/tcp                                                                                       tarefa-m4_t13-postgres-1
+c16094107f96   myjenkins-blueocean:latest                              "/usr/bin/tini -- /u…"   3 days ago       Up 2 hours               0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp, 0.0.0.0:50000->50000/tcp, [::]:50000->50000/tcp   jenkins-blueocean
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3$ make add_agent_daemon
+docker exec -it puppet_agent puppet agent -D
+docker exec -it puppet_agent ps -eaf
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 13:06 pts/0    00:00:00 sh -c while [ 1 ];do sleep 30;done;
+root           8       1  0 13:07 pts/0    00:00:00 sleep 30
+root          15       1  0 13:07 ?        00:00:00 /opt/puppetlabs/puppet/bin/ruby /opt/puppetlabs/puppet/bin/puppet agent -D
+root          18       0  0 13:07 pts/1    00:00:00 ps -eaf
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3$ make list_nodes
+curl -ks -X GET https://localhost:8081/pdb/query/v4/nodes | python -m json.tool
+/bin/sh: 1: python: not found
+make: *** [Makefile:64: list_nodes] Error 127
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3$ ^C
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3$ make list_nodes
+curl -ks -X GET https://localhost:8081/pdb/query/v4/nodes | python3 -m json.tool
+[
+    {
+        "deactivated": null,
+        "latest_report_hash": "4651c51885744f166107ab3fdfd19399a53890ce",
+        "facts_environment": "production",
+        "cached_catalog_status": "not_used",
+        "report_environment": "production",
+        "latest_report_corrective_change": null,
+        "catalog_environment": "production",
+        "facts_timestamp": "2026-04-19T13:08:10.991Z",
+        "latest_report_noop": false,
+        "expired": null,
+        "latest_report_noop_pending": false,
+        "report_timestamp": "2026-04-19T13:08:11.320Z",
+        "certname": "9a219980fc1f.home",
+        "catalog_timestamp": "2026-04-19T13:08:11.217Z",
+        "latest_report_job_id": null,
+        "latest_report_status": "unchanged"
+    }
+]
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3$ make list_node_names
+        "certname": "9a219980fc1f.home",
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3$ make dump_nodes
+docker exec -it puppet_agent puppet node find |/bin/cat 2>&1 > output.json
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3$ cat output.json
+{
+  "name": "9a219980fc1f.home",
+  "environment": "production",
+  "parameters": {
+    "aio_agent_version": "8.9.0",
+    "augeas": {
+      "version": "1.14.1"
+    },
+    "disks": {
+      "sda": {
+        "model": "Virtual Disk",
+        "size": "388.61 MiB",
+        "size_bytes": 407490560,
+        "type": "hdd",
+        "vendor": "Msft"
+      },
+      "sdb": {
+        "model": "Virtual Disk",
+        "size": "186.04 MiB",
+        "size_bytes": 195080192,
+        "type": "hdd",
+        "vendor": "Msft"
+      },
+      "sdc": {
+        "model": "Virtual Disk",
+        "size": "8.00 GiB",
+        "size_bytes": 8589938688,
+        "type": "hdd",
+        "vendor": "Msft"
+      },
+      "sdd": {
+        "model": "Virtual Disk",
+        "size": "1.00 TiB",
+        "size_bytes": 1099511627776,
+        "type": "hdd",
+        "vendor": "Msft"
+      }
+    },
+    "facterversion": "4.9.0",
+    "filesystems": "btrfs,ext2,ext3,ext4,msdos,squashfs,udf,vfat,xfs",
+    "fips_enabled": false,
+    "identity": {
+      "gid": 0,
+      "group": "root",
+      "privileged": true,
+      "uid": 0,
+      "user": "root"
+    },
+    "is_virtual": true,
+    "kernel": "Linux",
+    "kernelmajversion": "6.6",
+    "kernelrelease": "6.6.87.2-microsoft-standard-WSL2",
+    "kernelversion": "6.6.87",
+    "load_averages": {
+      "15m": 1.4,
+      "1m": 1.46,
+      "5m": 1.39
+    },
+    "memory": {
+      "swap": {
+        "available": "8.00 GiB",
+        "available_bytes": 8589934592,
+        "capacity": "0.00%",
+        "total": "8.00 GiB",
+        "total_bytes": 8589934592,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "system": {
+        "available": "24.99 GiB",
+        "available_bytes": 26837647360,
+        "capacity": "19.30%",
+        "total": "30.97 GiB",
+        "total_bytes": 33254731776,
+        "used": "5.98 GiB",
+        "used_bytes": 6417084416
+      }
+    },
+    "mountpoints": {
+      "/": {
+        "available": "936.23 GiB",
+        "available_bytes": 1005266812928,
+        "capacity": "2.03%",
+        "device": "overlay",
+        "filesystem": "overlay",
+        "options": [
+          "rw",
+          "relatime",
+          "lowerdir=/var/lib/docker/overlay2/l/ETR3PTECS2LWHENM3UVENQN7R2:/var/lib/docker/overlay2/l/JM3ZOAFH6YVGM77GX7OUD6MDPN:/var/lib/docker/overlay2/l/P4TKZSRURIW4BD46BS447HYGLB:/var/lib/docker/overlay2/l/E2PX4AMSFIAXZUGSZLR7MEZLV6:/var/lib/docker/overlay2/l/BARJT3M4FPFACYB3XNZZJJZGKX:/var/lib/docker/overlay2/l/EJJP2GFSGKCRGNJ7XG6FFUFB2M:/var/lib/docker/overlay2/l/ZOKFMC5TTIH35EIKD2QAQLO3GR:/var/lib/docker/overlay2/l/XMULUWSY3WBLY2ZLL2SDGWTHQS:/var/lib/docker/overlay2/l/MVRFFQN24VZZMVZNR557VGAHSQ",
+          "upperdir=/var/lib/docker/overlay2/9fe3f2a6d2af4c2cc499c0bf40abe94f658267a80730f087284e117ec97c91c0/diff",
+          "workdir=/var/lib/docker/overlay2/9fe3f2a6d2af4c2cc499c0bf40abe94f658267a80730f087284e117ec97c91c0/work"
+        ],
+        "size": "1006.85 GiB",
+        "size_bytes": 1081101176832,
+        "used": "19.41 GiB",
+        "used_bytes": 20842008576
+      },
+      "/dev": {
+        "available": "64.00 MiB",
+        "available_bytes": 67108864,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "rw",
+          "nosuid",
+          "size=65536k",
+          "mode=755"
+        ],
+        "size": "64.00 MiB",
+        "size_bytes": 67108864,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/dev/console": {
+        "available": "0 bytes",
+        "available_bytes": 0,
+        "capacity": "100%",
+        "device": "devpts",
+        "filesystem": "devpts",
+        "options": [
+          "rw",
+          "nosuid",
+          "noexec",
+          "relatime",
+          "gid=5",
+          "mode=620",
+          "ptmxmode=666"
+        ],
+        "size": "0 bytes",
+        "size_bytes": 0,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/dev/mqueue": {
+        "available": "0 bytes",
+        "available_bytes": 0,
+        "capacity": "100%",
+        "device": "mqueue",
+        "filesystem": "mqueue",
+        "options": [
+          "rw",
+          "nosuid",
+          "nodev",
+          "noexec",
+          "relatime"
+        ],
+        "size": "0 bytes",
+        "size_bytes": 0,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/dev/pts": {
+        "available": "0 bytes",
+        "available_bytes": 0,
+        "capacity": "100%",
+        "device": "devpts",
+        "filesystem": "devpts",
+        "options": [
+          "rw",
+          "nosuid",
+          "noexec",
+          "relatime",
+          "gid=5",
+          "mode=620",
+          "ptmxmode=666"
+        ],
+        "size": "0 bytes",
+        "size_bytes": 0,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/dev/shm": {
+        "available": "64.00 MiB",
+        "available_bytes": 67108864,
+        "capacity": "0%",
+        "device": "shm",
+        "filesystem": "tmpfs",
+        "options": [
+          "rw",
+          "nosuid",
+          "nodev",
+          "noexec",
+          "relatime",
+          "size=65536k"
+        ],
+        "size": "64.00 MiB",
+        "size_bytes": 67108864,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/etc/hostname": {
+        "available": "936.23 GiB",
+        "available_bytes": 1005266812928,
+        "capacity": "2.03%",
+        "device": "/dev/sdd",
+        "filesystem": "ext4",
+        "options": [
+          "rw",
+          "relatime",
+          "discard",
+          "errors=remount-ro",
+          "data=ordered"
+        ],
+        "size": "1006.85 GiB",
+        "size_bytes": 1081101176832,
+        "used": "19.41 GiB",
+        "used_bytes": 20842008576
+      },
+      "/etc/hosts": {
+        "available": "936.23 GiB",
+        "available_bytes": 1005266812928,
+        "capacity": "2.03%",
+        "device": "/dev/sdd",
+        "filesystem": "ext4",
+        "options": [
+          "rw",
+          "relatime",
+          "discard",
+          "errors=remount-ro",
+          "data=ordered"
+        ],
+        "size": "1006.85 GiB",
+        "size_bytes": 1081101176832,
+        "used": "19.41 GiB",
+        "used_bytes": 20842008576
+      },
+      "/etc/resolv.conf": {
+        "available": "936.23 GiB",
+        "available_bytes": 1005266812928,
+        "capacity": "2.03%",
+        "device": "/dev/sdd",
+        "filesystem": "ext4",
+        "options": [
+          "rw",
+          "relatime",
+          "discard",
+          "errors=remount-ro",
+          "data=ordered"
+        ],
+        "size": "1006.85 GiB",
+        "size_bytes": 1081101176832,
+        "used": "19.41 GiB",
+        "used_bytes": 20842008576
+      },
+      "/proc/acpi": {
+        "available": "15.49 GiB",
+        "available_bytes": 16627363840,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "ro",
+          "relatime"
+        ],
+        "size": "15.49 GiB",
+        "size_bytes": 16627363840,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/proc/interrupts": {
+        "available": "64.00 MiB",
+        "available_bytes": 67108864,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "rw",
+          "nosuid",
+          "size=65536k",
+          "mode=755"
+        ],
+        "size": "64.00 MiB",
+        "size_bytes": 67108864,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/proc/kcore": {
+        "available": "64.00 MiB",
+        "available_bytes": 67108864,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "rw",
+          "nosuid",
+          "size=65536k",
+          "mode=755"
+        ],
+        "size": "64.00 MiB",
+        "size_bytes": 67108864,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/proc/keys": {
+        "available": "64.00 MiB",
+        "available_bytes": 67108864,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "rw",
+          "nosuid",
+          "size=65536k",
+          "mode=755"
+        ],
+        "size": "64.00 MiB",
+        "size_bytes": 67108864,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/proc/latency_stats": {
+        "available": "64.00 MiB",
+        "available_bytes": 67108864,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "rw",
+          "nosuid",
+          "size=65536k",
+          "mode=755"
+        ],
+        "size": "64.00 MiB",
+        "size_bytes": 67108864,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/proc/scsi": {
+        "available": "15.49 GiB",
+        "available_bytes": 16627363840,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "ro",
+          "relatime"
+        ],
+        "size": "15.49 GiB",
+        "size_bytes": 16627363840,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/proc/timer_list": {
+        "available": "64.00 MiB",
+        "available_bytes": 67108864,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "rw",
+          "nosuid",
+          "size=65536k",
+          "mode=755"
+        ],
+        "size": "64.00 MiB",
+        "size_bytes": 67108864,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/sys/firmware": {
+        "available": "15.49 GiB",
+        "available_bytes": 16627363840,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "ro",
+          "relatime"
+        ],
+        "size": "15.49 GiB",
+        "size_bytes": 16627363840,
+        "used": "0 bytes",
+        "used_bytes": 0
+      }
+    },
+    "networking": {
+      "domain": "home",
+      "fqdn": "9a219980fc1f.home",
+      "hostname": "9a219980fc1f",
+      "interfaces": {
+        "eth0": {
+          "bindings": [
+            {
+              "address": "172.20.0.6",
+              "netmask": "255.255.0.0",
+              "network": "172.20.0.0"
+            }
+          ],
+          "ip": "172.20.0.6",
+          "mac": "ee:47:98:4d:95:f9",
+          "netmask": "255.255.0.0",
+          "network": "172.20.0.0",
+          "operational_state": "up",
+          "physical": false
+        },
+        "lo": {
+          "bindings": [
+            {
+              "address": "127.0.0.1",
+              "netmask": "255.0.0.0",
+              "network": "127.0.0.0"
+            }
+          ],
+          "bindings6": [
+            {
+              "address": "::1",
+              "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+              "network": "::1",
+              "scope6": "host",
+              "flags": [
+                "permanent"
+              ]
+            }
+          ],
+          "ip": "127.0.0.1",
+          "ip6": "::1",
+          "netmask": "255.0.0.0",
+          "netmask6": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+          "network": "127.0.0.0",
+          "network6": "::1",
+          "operational_state": "unknown",
+          "physical": false,
+          "scope6": "host"
+        }
+      },
+      "ip": "172.20.0.6",
+      "mac": "ee:47:98:4d:95:f9",
+      "netmask": "255.255.0.0",
+      "network": "172.20.0.0",
+      "primary": "eth0"
+    },
+    "os": {
+      "architecture": "amd64",
+      "distro": {
+        "codename": "jammy",
+        "description": "Ubuntu 22.04.5 LTS",
+        "id": "Ubuntu",
+        "release": {
+          "full": "22.04",
+          "major": "22.04"
+        }
+      },
+      "family": "Debian",
+      "hardware": "x86_64",
+      "name": "Ubuntu",
+      "release": {
+        "full": "22.04",
+        "major": "22.04"
+      },
+      "selinux": {
+        "enabled": false
+      }
+    },
+    "path": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin",
+    "processors": {
+      "cores": 8,
+      "count": 16,
+      "extensions": [
+        "x86_64",
+        "x86_64-v1",
+        "x86_64-v2",
+        "x86_64-v3"
+      ],
+      "isa": "x86_64",
+      "models": [
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics",
+        "AMD Ryzen 7 7735HS with Radeon Graphics"
+      ],
+      "physicalcount": 1,
+      "speed": "3.19 GHz",
+      "threads": 2
+    },
+    "puppetversion": "8.9.0",
+    "ruby": {
+      "platform": "x86_64-linux",
+      "sitedir": "/opt/puppetlabs/puppet/lib/ruby/site_ruby/3.2.0",
+      "version": "3.2.5"
+    },
+    "system_uptime": {
+      "days": 0,
+      "hours": 1,
+      "seconds": 6754,
+      "uptime": "1:52 hours"
+    },
+    "timezone": "UTC",
+    "virtual": "hyperv",
+    "clientcert": "9a219980fc1f.home",
+    "clientversion": "8.9.0",
+    "clientnoop": false
+  }
+}
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3$ make stop_puppet_agent
+docker stop puppet_agent
+puppet_agent
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3$ make stop_puppet_server
+REGISTRY_PATH="ghcr.io/voxpupuli" \
+POSTGRES_USER=puppetdb \
+POSTGRES_PASSWORD=puppetdb \
+POSTGRES_DB=puppetdb \
+docker-compose -f compose_puppet.yaml down
+[+] Running 5/5
+ ✔ Container tarefa-m4_t13-puppetboard-1  Removed                                                                                       0.7s 
+ ✔ Container tarefa-m4_t13-puppetdb-1     Removed                                                                                       0.5s 
+ ✔ Container tarefa-m4_t13-puppet-1       Removed                                                                                       0.7s 
+ ✔ Container tarefa-m4_t13-postgres-1     Removed                                                                                       0.4s 
+ ✔ Network crafty-oss                     Removed                                                                                       0.3s 
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3$ make clean
+make stop_puppet_server
+make[1]: Entering directory '/home/querinoz/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3'
+REGISTRY_PATH="ghcr.io/voxpupuli" \
+POSTGRES_USER=puppetdb \
+POSTGRES_PASSWORD=puppetdb \
+POSTGRES_DB=puppetdb \
+docker-compose -f compose_puppet.yaml down
+make[1]: Leaving directory '/home/querinoz/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3'
+docker stop $(docker ps -qa) || true
+9a219980fc1f
+c16094107f96
+docker system prune -af --volumes
+Deleted Containers:
+9a219980fc1fb6a2f913b2474b02292dccc8f6d248d8fc90a175c80316b81462
+c16094107f9691144ccd40825db47a02e46d2a2043ebedd16d7a88868c5b4eb5
+
+Deleted Networks:
+jenkins
+
+Deleted Images:
+untagged: ghcr.io/voxpupuli/puppetboard:latest
+untagged: ghcr.io/voxpupuli/puppetboard@sha256:098c2f907f73dd9a21a7a770e296df8ff39eab48c1957d20092cca75c7b8b46d
+deleted: sha256:73298c1005e81d41d009a45951a1f39f622008a91f38a734f57b6864f4722f53
+deleted: sha256:a71b0292e598f84a57f27c0fe62d5fd7e8228aaea561731fc5bd924bac0afb0c
+deleted: sha256:e65ac237b54a69ec119474f9047e8c0e0e2ce01862784cf9c332e873641f5556
+deleted: sha256:53145f3367cc582000d8a322f6dcdbe1b14cb7dff6e07c7ac873a6d707d9977f
+deleted: sha256:3b142ba7a8f722751ee2bf02754f5de871aa81010741d3c8423a09fdc66b997c
+deleted: sha256:cdbc1573eacb742c082a8139ad2517bca0426d229060c5a4430bccce2f141c50
+deleted: sha256:0966fcbb21b695d4acbf0f3daac2c49e2b2e9f3f364a48e800c50c4994550853
+deleted: sha256:771fc9ce417ca5bc461b12840884e3776e1872a36fc34f4216eb0037217c8de0
+deleted: sha256:f5a5948bf575eaafa993befefd21f1fa449bbff21850b19cb10eb572eed321c8
+deleted: sha256:96a4946a53c734b3d1a4814ed72d066fbffc828c30dda58a1627e860eace1ff6
+deleted: sha256:38ca9214b2c8a7728192ce4e82a8894e6863cffeb9fc5d32df45bbf9d837e911
+deleted: sha256:989e799e634906e94dc9a5ee2ee26fc92ad260522990f26e707861a5f52bf64e
+untagged: ghcr.io/voxpupuli/container-puppetserver:8.4.0-latest
+untagged: ghcr.io/voxpupuli/container-puppetserver@sha256:21b402f77585e64ad5efc792abf97c85b2d8326517c619d58273ac338c9d16dc
+deleted: sha256:5a06e264c828b9be8ef98b34a7c5cee7c096a2f0fc43135db78860aea83ff213
+deleted: sha256:d85acd1bb5694ace2dd4e4eae356513500a5f7e50bb6b3c2677fa95eef430a38
+deleted: sha256:2b1fb566b4cdf61b4890101e4fb7be2b3800b6a5268b18274953253ed4f49c7e
+deleted: sha256:86f6f3e1e7bb1ccf3ee7a7faed5743c0ccb004b16e9c9ad4052c904eef0a9f3a
+deleted: sha256:38af40f62405d06c11d0fadd260dd93a5c25f58d5fb163038e9cf15cac430f76
+deleted: sha256:b7027ce6a8003bb8b31092117045ab558a39e6c160381e101e554312028fc370
+deleted: sha256:7795f551b9384704ed726b6c73b16fd155ffa52b3bbadd1ec5ecc4ce55bd369a
+deleted: sha256:f01d83988651789387b070145c181998510114b33abf4a288386c42b270fedc1
+deleted: sha256:788f1f8015cc84395600330b12a44b9c319ac797bad8b4ca3e00db8f77ce2b3a
+deleted: sha256:459b79a3a291de0909a63abfc38d4346d09142743d92bf799262b2aab4773cfb
+deleted: sha256:caa963cc38ca66f5dce6516fb8473bdc6531d3fa3b1c1dfb42eed0ff7095f680
+deleted: sha256:d311c3262192770cbdb085c50c6aab87d6dffc0181aa8cb32f37253efef0106a
+deleted: sha256:a9913457b0404e508f6a08c1923819c5a56decf9adedaca5dab27ee7adffe6bf
+deleted: sha256:898d27973c0206ccf874619a66ecc7f3ed4ed7106fe72f02fca191e8fc12185b
+deleted: sha256:90047f987941e220e7ecd880653f89909470ad42bdbbe8963d9ddfb34f655d61
+deleted: sha256:5b85d8e91cba0d3f225d47e9c4c7e8f1f38ac718a0e548ecadef589799e02445
+untagged: ghcr.io/voxpupuli/container-puppetdb:8.3.0-latest
+untagged: ghcr.io/voxpupuli/container-puppetdb@sha256:0c97dd7a8faba84495f638d219c18b5e0917e4dd88337d3c78fb536a69524f69
+deleted: sha256:77f83204120d8a4afe6e4b8412ac1fc8b8ed7753acccfbafc467dd08b91b02a5
+deleted: sha256:64c79e95e8bfd56c4f35bc3c1c3b551781e5be30b21249fbaee14f3781955708
+deleted: sha256:cc4e1e02664cccad9b3a8ecf2db17118b7e520b7902707d81a24f4c707386323
+deleted: sha256:c95b426287b32d3441a714a205f6327c2ba6c9fab41b5ea9801ff9668fe16cb0
+deleted: sha256:419ebf26d49ec086413e5776d3bd27533e47feb17827978bc000b3a6d5efb4b5
+deleted: sha256:40a951a1ab207cc9aa07a01d8e39452070c1584829c0982076250a31c6a16972
+deleted: sha256:8ee50b8aed49f3f5d27b031c0f74e6309e2ace03218f135fd73386a6484f07b5
+deleted: sha256:8c80d97668af4a384891830c911273ee32638cf9acc19b94470eee1e82fcb1b9
+deleted: sha256:6d6fca04c8c648671614dd098a2be1b8b6b8b5e5d6b4cb3c9b1012624010ab51
+deleted: sha256:63b93038c2600205f9a6df5f599d344dd1977a28a0fa6eabc376ec984e8f4da5
+deleted: sha256:5498e8c22f6996f25ef193ee58617d5b37e2a96decf22e72de13c3b34e147591
+untagged: ghcr.io/betadots/pdc:latest
+untagged: ghcr.io/betadots/pdc@sha256:e012f5dffcde6fab1af3d6ac57ea9ceabba251f0fc742bda3cbd3cb04dae9bdd
+deleted: sha256:ca311f0a2fd999abe4e46ad7d49922f61507b08f40136969196f2c96826a3731
+deleted: sha256:42e2666969110ce05424ff4c08c76d5cd1084068735f384cda0f57b48e419e79
+deleted: sha256:ab133debb5fac5e2fde596d5e4361fea2a0a44542db29ca59709988c6e38be49
+deleted: sha256:461bf0ee3175244c5a6d372d57181f7461d07cf7d24186a1df42ee0525f20a74
+deleted: sha256:a81fb72c155ab5bad5a9d9479b328c0aae81e14db51c5d3d7cad6d868188ecf1
+deleted: sha256:5f6b07353204fb4a7215590ca8e1725a62cf6258ad1d7aa7b5a35c743180635d
+deleted: sha256:a4e77ba2cb5a31667c89ed134bb73e8926cf1bb5e40e8400ba5c1aed2ebecbfd
+deleted: sha256:68f22121639bb4082b353e003496e5ecc9b491814e90e9c4792ecb7b257d3123
+deleted: sha256:270a1170e7e398434ff1b31e17e233f7d7b71aa99a40473615860068e86720af
+untagged: myjenkins-blueocean:latest
+deleted: sha256:645bd2e5c6396cdd0459ae0157c59e780f82ebf4832bb2be94b3ec8fdcad78a8
+untagged: postgres:16-alpine
+untagged: postgres@sha256:93d55776e04376e19adb2733e3ccebb4392ee7dd86d8ff238503b30fe719c84f
+deleted: sha256:0001755f47e38bfd163788ccc543387b7f3da35a01b38a7c2ca1cd0277f06b5d
+deleted: sha256:6a5109a49d635dba191423e486a84e202d235a57b0f76c474f8d6bab80c5cb51
+deleted: sha256:e1214d20085290a8f594891b9995f09841986daea46550ee8e563e54438f6b36
+deleted: sha256:1a1d2ef92c4df9c3d1c7d0f4821f301532a35766f471e98af8fa6ff1cd9d2590
+deleted: sha256:2a640c5427f5de93b06acd218689c63404eeac17ad4fb46f09275df3e22bbd1f
+deleted: sha256:b735a794698cafbbab5d08a01a447e025fb1b55678e837ba1ef946360d2efe31
+deleted: sha256:d13e4c48cd668430218c4ab8ea7b175c9804fb179366ff10b122ab4ba6d94bfe
+deleted: sha256:b9db2a968c7bb82db9aacfbeb1366eb21b964ba7506419b0f78b99e7f7dcadf0
+deleted: sha256:6a1b8a9c638f9699c007e8308875cf94952cfb01e6a67044c24ee2b9bce80a61
+deleted: sha256:d308eca3d300df407dafc6e7681d3bf8ef04e49653fff79ffdd9848ed8482b11
+deleted: sha256:c95475267e4a62a5b1665792bf072df1a1899047a09e393fad2229b5b6c91899
+deleted: sha256:29df493baa13de438d6d2ece3a8333032e0b7b9b9d8cce4ee82194da255f61e1
+
+Deleted build cache objects:
+jjp4kunpfpj02tug4co40t39w
+m2momypialne2bwfitgzsrlsu
+xf5jrh39j9rn28j6wa8irr7hl
+v0qkkaqt1mq0rjqpa4emkbtrb
+gv2ek21byadt9xvzs2kyo8i2t
+tze6gfdz9hog43peaghala4yn
+ixkbbtcv850xj234sopw4lc4e
+6ejcdynladna4g74kg9m2xukv
+n7fd9aoav3912qzw3ur7aq12d
+48c89e956oovp55yddrnquhfg
+vxp57ak0zyg4repcsbdsn67sa
+226z9kdidp913j4fkvhzyugip
+s5wap0t06sbqzd7k8galhrxxr
+80l9nwhharbh8370kniqo3jo6
+q67bka6gmb0qh00uaqjehcwcb
+mc5t7brc2gesji0nrmybaybc9
+am0cqwch70t557yj44pugt8yk
+d5httv5qb25zrflmi9duacuya
+yqpv4hipoeou6xnulc2htr8ts
+
+Total reclaimed space: 2.936GB
+docker volume prune -af
+Deleted Volumes:
+tarefa-m4_t13_puppetdb
+tarefa-m4_t13_puppetdb-postgres
+jenkins-data
+jenkins-docker-certs
+tarefa-m4_t13_puppetserver
+tarefa-m4_t13_puppetserver-ssl
+tarefa-m4_t13_puppetserver-ca
+
+Total reclaimed space: 462.2MB
+docker network prune -f
+docker builder prune -af
+Total:  0B
+docker system df
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          0         0         0B        0B
+Containers      0         0         0B        0B
+Local Volumes   0         0         0B        0B
+Build Cache     0         0         0B        0B
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa-M4_T1.3$ docker ps -a
+docker system df
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          0         0         0B        0B
+Containers      0         0         0B        0B
+Local Volumes   0         0         0B        0B
+Build Cache     0         0         0B        0B

@@ -1,0 +1,75 @@
+version: '3.8'
+
+# Development Environment Configuration
+# Use: docker-compose -f docker-compose.dev.yml up
+
+services:
+  service-a:
+    build:
+      context: ./microservices/service-a
+      dockerfile: Dockerfile
+    container_name: dev-service-a
+    ports:
+      - "8001:8001"
+    environment:
+      - PORT=8001
+      - SERVICE_B_URL=http://service-b:8002
+      - JAEGER_AGENT_HOST=jaeger
+      - JAEGER_AGENT_PORT=6831
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
+    volumes:
+      - ./microservices/service-a:/app
+    networks:
+      - dev-network
+    depends_on:
+      - service-b
+      - jaeger
+    restart: unless-stopped
+    command: flask run --host=0.0.0.0 --port=8001 --reload
+
+  service-b:
+    build:
+      context: ./microservices/service-b
+      dockerfile: Dockerfile
+    container_name: dev-service-b
+    ports:
+      - "8002:8002"
+    environment:
+      - PORT=8002
+      - JAEGER_AGENT_HOST=jaeger
+      - JAEGER_AGENT_PORT=6831
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
+    volumes:
+      - ./microservices/service-b:/app
+    networks:
+      - dev-network
+    depends_on:
+      - jaeger
+    restart: unless-stopped
+    command: flask run --host=0.0.0.0 --port=8002 --reload
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.51
+    container_name: dev-jaeger
+    ports:
+      - "5775:5775/udp"
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+      - "5778:5778"
+      - "16686:16686"
+      - "14268:14268"
+      - "14250:14250"
+      - "9411:9411"
+    environment:
+      - COLLECTOR_ZIPKIN_HOST_PORT=:9411
+      - COLLECTOR_OTLP_ENABLED=true
+    networks:
+      - dev-network
+    restart: unless-stopped
+
+networks:
+  dev-network:
+    driver: bridge
+    name: dev-network

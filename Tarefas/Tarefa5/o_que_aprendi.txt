@@ -1,0 +1,5 @@
+"O servidor web do python foi considerado pelo firefox como inseguro.
+
+Explicação:Isto acontece porque utilizamos um certificado auto-assinado (self-signed certificate). Como o certificado não foi emitido por uma Autoridade de Certificação (CA) fidedigna reconhecida pelo Firefox, o navegador não consegue validar a identidade do servidor, embora a ligação esteja encriptada.
+
+Erro Passo 6: O erro ocorreu porque portas inferiores a 1024 (como a 443 do HTTPS padrão) são portas privilegiadas no Linux. Por segurança, o sistema operativo impede que utilizadores sem privilégios administrativos as utilizem. A solução é executar o comando com prefixo sudo."

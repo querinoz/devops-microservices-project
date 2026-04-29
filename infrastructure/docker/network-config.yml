@@ -1,0 +1,15 @@
+# Docker Network Configuration
+# This file defines the network settings for the microservices architecture
+
+networks:
+  microservices-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.25.0.0/16
+          gateway: 172.25.0.1
+    driver_opts:
+      com.docker.network.bridge.name: br-microservices
+      com.docker.network.bridge.enable_ip_masquerade: "true"
+      com.docker.network.bridge.enable_icc: "true"

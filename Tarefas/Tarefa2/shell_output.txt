@@ -1,0 +1,68 @@
+querinoz@Querino:~/devops$
+querinoz@Querino:~/devops$
+querinoz@Querino:~/devops$ ls
+analyse-logs.sh  logs  tokioschool
+querinoz@Querino:~/devops$ ls -la
+total 20
+drwxr-xr-x  4 querinoz querinoz 4096 Jan 26 18:45 .
+drwxr-x--- 21 querinoz querinoz 4096 Apr 15 10:32 ..
+-rwxr-xr-x  1 querinoz querinoz 1635 Oct 27 22:04 analyse-logs.sh
+drwxr-xr-x  2 querinoz querinoz 4096 Oct 27 22:28 logs
+drwxr-xr-x  3 querinoz querinoz 4096 Jan 26 19:14 tokioschool
+querinoz@Querino:~/devops$ whoami
+querinoz
+querinoz@Querino:~/devops$ pwd
+/home/querinoz/devops
+querinoz@Querino:~/devops$ cd ~
+querinoz@Querino:~$ cd ~/devops/
+querinoz@Querino:~/devops$ cd ~
+querinoz@Querino:~$ mkdir teste
+querinoz@Querino:~$ touch teste/teste.txt
+querinoz@Querino:~$ rmdir teste
+rmdir: failed to remove 'teste': Directory not empty
+querinoz@Querino:~$ ll teste/
+ll: command not found
+querinoz@Querino:~$ ls -la teste/
+total 8
+drwxr-xr-x  2 querinoz querinoz 4096 Apr 15 10:36 .
+drwxr-x--- 22 querinoz querinoz 4096 Apr 15 10:36 ..
+-rw-r--r--  1 querinoz querinoz    0 Apr 15 10:36 teste.txt
+querinoz@Querino:~$ rm teste/teste.txt
+querinoz@Querino:~$ ls -la teste/
+total 8
+drwxr-xr-x  2 querinoz querinoz 4096 Apr 15 10:37 .
+drwxr-x--- 22 querinoz querinoz 4096 Apr 15 10:36 ..
+querinoz@Querino:~$ rmdir teste
+querinoz@Querino:~$ ls -la
+total 116
+drwxr-x--- 21 querinoz querinoz  4096 Apr 15 10:37 .
+drwxr-xr-x  3 root     root      4096 Apr 12  2024 ..
+lrwxrwxrwx  1 querinoz querinoz    23 Oct  9  2025 .aws -> /mnt/c/Users/duhqu/.aws
+lrwxrwxrwx  1 querinoz querinoz    25 Oct  9  2025 .azure -> /mnt/c/Users/duhqu/.azure
+-rw-------  1 querinoz querinoz 13467 Apr 14 22:32 .bash_history
+-rw-r--r--  1 querinoz querinoz   200 Dec 17 16:20 .bashrc
+drwx------  4 querinoz querinoz  4096 Jan 26 20:15 .cache
+drwx------  6 querinoz querinoz  4096 Apr 14 22:08 .config
+drwx------  3 querinoz querinoz  4096 Mar  5 09:39 .copilot
+drwx------  5 querinoz querinoz  4096 Jan 26 19:32 .docker
+drwxr-xr-x  3 querinoz querinoz  4096 Jan 26 20:16 .dotnet
+drwxr-xr-x  9 querinoz querinoz  4096 Apr  4 15:40 .git
+-rw-r--r--  1 querinoz querinoz    59 Jan 26 20:49 .gitconfig
+drwxr-xr-x  3 querinoz querinoz  4096 Oct  9  2025 .jenkins
+-rw-------  1 querinoz querinoz    20 Jan 26 20:45 .lesshst
+drwxr-xr-x  5 querinoz querinoz  4096 Feb 10 17:58 .local
+-rw-r--r--  1 querinoz querinoz     0 Apr 15 09:42 .motd_shown
+drwx------  2 querinoz querinoz  4096 Dec 16 18:27 .ngrok2
+drwxr-xr-x  5 querinoz querinoz  4096 Dec 16 21:22 .npm
+drwxr-xr-x  8 querinoz querinoz  4096 Dec 16 21:07 .nvm
+drwx------  2 querinoz querinoz  4096 Oct  1  2025 .ssh
+-rw-r--r--  1 querinoz querinoz     0 Dec 16 21:02 .sudo_as_admin_successful
+drwxr-xr-x  4 querinoz querinoz  4096 Nov  9 10:39 .vscode-remote-containers
+drwxr-xr-x  5 querinoz querinoz  4096 Jan 26 20:15 .vscode-server
+drwxr-xr-x  8 querinoz querinoz  4096 Jan 26 18:40 autodashboard
+drwxr-xr-x  4 querinoz querinoz  4096 Jan 26 18:45 devops
+-rw-r--r--  1 querinoz querinoz  1903 Mar 19 09:56 shell_output.txt
+drwx------  4 querinoz querinoz  4096 Apr 14 22:08 snap
+drwxr-xr-x  2 querinoz querinoz  4096 Mar 19 09:52 tarefas
+drwxr-xr-x  2 querinoz querinoz  4096 Apr 15 10:32 test
+querinoz@Querino:~$

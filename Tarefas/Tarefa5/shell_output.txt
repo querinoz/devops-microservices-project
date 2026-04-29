@@ -1,0 +1,57 @@
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa5$ python3 servidor.py 
+Traceback (most recent call last):
+  File "/home/querinoz/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa5/servidor.py", line 12, in <module>
+    context.load_cert_chain(certfile="cert.pem", keyfile="key.pem")
+FileNotFoundError: [Errno 2] No such file or directory
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa5$ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 365 -nodes
+...+..+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*.+.....+.......+.........+.....................+.....+....+...+..+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*..+..................+..+...+.+......+.....+.+...+...........+................+...+.....................+...+..............................+..+.+........+.+..............+...........................+...................+.....+................+.........+.........+............+..+.+..+.......+...+.........+.........+............+.........+.........+.....+.......+...+..+....+...+...+..+......+............+.......+...+..+.............+....................+.......+..+....+.................+...+.+...+.........................................+.+......+...............+..+...+............+.+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.........+.+..+...+.......+..+...+.+.................+..........+...+.....+.+......+.........+......+..+...+...+.+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*.+.+......+...+........+...+....+......+.....+....+..+.+...+.........+..+......+...+....+.....+..........+..+.+..+.+......+......+.........+.....+...+.............+...+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*...+.......+...+..............+....+...........+....+.........+........+...+......+...+.+......+...........+.......+..+......+...+.......+............+...............+......+.....+....+...+...............+........+.+.....+.+....................+....+........................+..+...............+............+.......+...+.................+......+..........+........+....+..+.+.....+.......+..+...+.+......+........+.............+.....+..........+....................+...+.......+.....+....+......+...............+..+...............+.+..+.......+......+.....+....+..+....+..............+......+.+...+..+.........+......+...................+.........+..+......+....+......+..+.+......+...+...+.........+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:PT
+State or Province Name (full name) [Some-State]:Porto
+Locality Name (eg, city) []:Porto
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:TokioSchool
+Organizational Unit Name (eg, section) []:DevOps
+Common Name (e.g. server FQDN or YOUR name) []:Querino
+Email Address []:devops@tokioschool.com
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa5$ python3 servidor.py 
+Servidor HTTPS https://localhost:4443
+^CTraceback (most recent call last):
+  File "/home/querinoz/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa5/servidor.py", line 18, in <module>
+    httpd.serve_forever()
+  File "/usr/lib/python3.10/socketserver.py", line 232, in serve_forever
+    ready = selector.select(poll_interval)
+  File "/usr/lib/python3.10/selectors.py", line 416, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt
+
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa5$ python3 servidor.py 
+Traceback (most recent call last):
+  File "/home/querinoz/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa5/servidor.py", line 8, in <module>
+    httpd = http.server.HTTPServer(server_address, http.server.SimpleHTTPRequestHandler)
+  File "/usr/lib/python3.10/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/usr/lib/python3.10/http/server.py", line 137, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/usr/lib/python3.10/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 13] Permission denied
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa5$ sudo python3 servidor.py 
+Servidor HTTPS https://localhost:443
+^CTraceback (most recent call last):
+  File "/home/querinoz/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa5/servidor.py", line 18, in <module>
+    httpd.serve_forever()
+  File "/usr/lib/python3.10/socketserver.py", line 232, in serve_forever
+    ready = selector.select(poll_interval)
+  File "/usr/lib/python3.10/selectors.py", line 416, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt
+
+querinoz@Querino:~/devops/tokioschool/devops-microservices-project/Tarefas/Tarefa5$ 
