@@ -1,0 +1,89 @@
+version: 2.1
+
+jobs:
+  test:
+    machine: true
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: Verify Docker Compose
+          command: |
+            if command -v docker >/dev/null 2>&1; then
+              docker version
+            fi
+            if command -v docker-compose >/dev/null 2>&1; then
+              docker-compose version
+            else
+              docker compose version
+            fi
+      - run:
+          name: Build Docker images
+          command: |
+            if command -v docker-compose >/dev/null 2>&1; then
+              docker-compose build --pull
+            else
+              docker compose build --pull
+            fi
+      - run:
+          name: Run Service A tests
+          command: |
+            if command -v docker-compose >/dev/null 2>&1; then
+              docker-compose run --rm --no-deps dev-service-a pytest -q
+            else
+              docker compose run --rm --no-deps dev-service-a pytest -q
+            fi
+      - run:
+          name: Run Service B tests
+          command: |
+            if command -v docker-compose >/dev/null 2>&1; then
+              docker-compose run --rm --no-deps dev-service-b pytest -q
+            else
+              docker compose run --rm --no-deps dev-service-b pytest -q
+            fi
+      - run:
+          name: Run Service A tests (STG image)
+          command: |
+            if command -v docker-compose >/dev/null 2>&1; then
+              docker-compose run --rm --no-deps stg-service-a pytest -q
+            else
+              docker compose run --rm --no-deps stg-service-a pytest -q
+            fi
+      - run:
+          name: Run Service B tests (STG image)
+          command: |
+            if command -v docker-compose >/dev/null 2>&1; then
+              docker-compose run --rm --no-deps stg-service-b pytest -q
+            else
+              docker compose run --rm --no-deps stg-service-b pytest -q
+            fi
+      - run:
+          name: Run Service A tests (PRD image)
+          command: |
+            if command -v docker-compose >/dev/null 2>&1; then
+              docker-compose run --rm --no-deps prd-service-a pytest -q
+            else
+              docker compose run --rm --no-deps prd-service-a pytest -q
+            fi
+      - run:
+          name: Run Service B tests (PRD image)
+          command: |
+            if command -v docker-compose >/dev/null 2>&1; then
+              docker-compose run --rm --no-deps prd-service-b pytest -q
+            else
+              docker compose run --rm --no-deps prd-service-b pytest -q
+            fi
+      - run:
+          name: Cleanup
+          command: |
+            if command -v docker-compose >/dev/null 2>&1; then
+              docker-compose down
+            else
+              docker compose down
+            fi
+
+workflows:
+  version: 2
+  ci:
+    jobs:
+      - test

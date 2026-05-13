@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify
 from flask_cors import CORS
 from jaeger_client import Config
 from flask_opentracing import FlaskTracing
@@ -35,11 +35,17 @@ def get_user_products():
             headers = {}
             tracer.inject(span.context, opentracing.Format.HTTP_HEADERS, headers)
             response = requests.get(f"{SERVICE_B_URL}/api/products", headers=headers, timeout=5)
+            span.set_tag("http.status_code", response.status_code)
+            if response.status_code >= 400:
+                span.set_tag("error", True)
+            response.raise_for_status()
             return jsonify({
                 "user": users_db[0],
                 "products": response.json().get("data", [])
             }), 200
         except Exception as e:
+            span.set_tag("error", True)
+            span.log_kv({"event": "error", "message": str(e)})
             return jsonify({"error": str(e)}), 503
 
 if __name__ == '__main__':

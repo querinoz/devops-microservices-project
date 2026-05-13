@@ -1,8 +1,0 @@
-O que aprendi:
-
-O servidor web do python foi considerado pelo firefox como inseguro.
-
-Explicação: O módulo http.server utiliza o protocolo HTTP (porta 80 ou 8000), que envia os dados em texto simples (plain text). Para ser considerado seguro, o servidor precisaria de utilizar o protocolo HTTPS (porta 443), que utiliza certificados SSL/TLS.
-O Firefox identifica a falta de cifragem e apresenta um ícone de um escudo com um X ou cadeado riscado ou um aviso de "Ligação não segura".
-
-Causa Raiz do Erro no Passo 6: O erro ocorreu porque portas inferiores a 1024 são reservadas pelo sistema operativo. Para utilizar a porta 80, é necessário ter privilégios de administrador (root), o que foi resolvido utilizando o prefixo sudo.

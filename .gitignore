@@ -5,6 +5,7 @@ __pycache__/
 *.so
 .Python
 venv/
+.venv/
 env/
 ENV/
 build/
@@ -44,9 +45,59 @@ test-results*.xml
 .DS_Store
 Thumbs.db
 
-# Jenkins
-jenkins_home/
-
 # Environment variables
 .env
 .env.local
+
+# =========================
+# Terraform
+# =========================
+.terraform/
+*.tfstate
+*.tfstate.backup
+crash.log
+
+# =========================
+# Docker
+# =========================
+*.log
+docker-compose.override.yml
+
+# =========================
+# Archives / Pacotes
+# =========================
+*.zip
+*.rar
+*.tar
+*.gz
+
+# =========================
+# Binários
+# =========================
+*.exe
+*.bin
+*.out
+minikube-*
+
+# =========================
+# Linux / Mac
+# =========================
+*.pid
+
+# =========================
+# Windows lixo
+# =========================
+*Zone.Identifier
+Thumbs.db
+Desktop.ini
+
+# =========================
+# CI
+# =========================
+*.tmp
+
+# =========================
+# Misc
+# =========================
+.env
+.env.*.env

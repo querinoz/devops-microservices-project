@@ -1,0 +1,133 @@
+<mxfile host="65bd71144e">
+    <diagram name="ProjetoFinal-HLD" id="projeto-final-hld">
+        <mxGraphModel dx="1514" dy="903" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="&lt;b&gt;Projeto Final DevOps - High Level Design&lt;/b&gt;&lt;br&gt;GitHub + CircleCI + Docker Compose + Flask + Jaeger" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="340" y="20" width="920" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="developer" value="&lt;b&gt;Developer&lt;/b&gt;&lt;br&gt;push / commit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="110" width="150" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="github" value="&lt;b&gt;GitHub Repository&lt;/b&gt;&lt;br&gt;source code&lt;br&gt;README + docs + microservices" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="100" width="220" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="circleci" value="&lt;b&gt;CircleCI Pipeline&lt;/b&gt;&lt;br&gt;checkout&lt;br&gt;docker compose build --pull&lt;br&gt;pytest on DEV / STG / PRD&lt;br&gt;cleanup" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="530" y="90" width="260" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="artifacts" value="&lt;b&gt;Tools and artifacts&lt;/b&gt;&lt;br&gt;Python 3.11&lt;br&gt;Flask / requests&lt;br&gt;pytest / pytest-flask&lt;br&gt;venv + requirements.txt&lt;br&gt;Jaeger + OpenTracing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="850" y="95" width="240" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="compose" value="&lt;b&gt;Docker Compose Orchestration&lt;/b&gt;&lt;br&gt;single compose file&lt;br&gt;isolated bridge networks&lt;br&gt;local deployment and validation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="1140" y="95" width="280" height="110" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="edge-dev-git" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#666666;" parent="1" source="developer" target="github" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-git-ci" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#6c8ebf;" parent="1" source="github" target="circleci" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-ci-tools" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#666666;dashed=1;" parent="1" source="circleci" target="artifacts" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-ci-compose" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#b85450;" parent="1" source="circleci" target="compose" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="dev-box" value="&lt;b&gt;DEV&lt;/b&gt;&lt;br&gt;network: dev" style="swimlane;html=1;rounded=1;whiteSpace=wrap;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=16;horizontal=0;startSize=32;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="280" width="450" height="310" as="geometry"/>
+                </mxCell>
+                <mxCell id="stg-box" value="&lt;b&gt;STG&lt;/b&gt;&lt;br&gt;network: stg" style="swimlane;html=1;rounded=1;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=16;horizontal=0;startSize=32;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="280" width="450" height="310" as="geometry"/>
+                </mxCell>
+                <mxCell id="prd-box" value="&lt;b&gt;PRD&lt;/b&gt;&lt;br&gt;network: prd" style="swimlane;html=1;rounded=1;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;fontSize=16;horizontal=0;startSize=32;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="280" width="450" height="310" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="dev-a" value="&lt;b&gt;Service A&lt;/b&gt;&lt;br&gt;Flask API&lt;br&gt;port: 8001&lt;br&gt;/api/users/1/products" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4d4d4d;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="340" width="120" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="dev-b" value="&lt;b&gt;Service B&lt;/b&gt;&lt;br&gt;Flask API&lt;br&gt;port: 8002&lt;br&gt;/api/products" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4d4d4d;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="340" width="120" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="dev-j" value="&lt;b&gt;Jaeger&lt;/b&gt;&lt;br&gt;UI: 16686&lt;br&gt;agent: 6831/udp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4d4d4d;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="390" y="340" width="120" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="dev-note" value="HTTP/JSON: Service A -&amp;gt; Service B&lt;br&gt;trace propagation to Jaeger" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="470" width="320" height="50" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="stg-a" value="&lt;b&gt;Service A&lt;/b&gt;&lt;br&gt;Flask API&lt;br&gt;host port: 9001" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4d4d4d;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="340" width="120" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="stg-b" value="&lt;b&gt;Service B&lt;/b&gt;&lt;br&gt;Flask API&lt;br&gt;host port: 9002" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4d4d4d;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="760" y="340" width="120" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="stg-j" value="&lt;b&gt;Jaeger&lt;/b&gt;&lt;br&gt;UI: 16687&lt;br&gt;agent: 6831/udp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4d4d4d;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="910" y="340" width="120" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="stg-note" value="Production-like compose settings&lt;br&gt;same image, separate network and ports" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="635" y="470" width="320" height="50" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="prd-a" value="&lt;b&gt;Service A&lt;/b&gt;&lt;br&gt;Flask API&lt;br&gt;host port: 10001" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4d4d4d;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="1120" y="340" width="120" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="prd-b" value="&lt;b&gt;Service B&lt;/b&gt;&lt;br&gt;Flask API&lt;br&gt;host port: 10002" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4d4d4d;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="1280" y="340" width="120" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="prd-j" value="&lt;b&gt;Jaeger&lt;/b&gt;&lt;br&gt;UI: 16688&lt;br&gt;agent: 6831/udp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4d4d4d;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="1430" y="340" width="120" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="prd-note" value="Same microservices architecture&lt;br&gt;validated by CircleCI and local compose tests" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="1155" y="470" width="320" height="50" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="edge-compose-dev" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#b85450;" parent="1" source="compose" target="dev-box" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-compose-stg" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#b85450;" parent="1" source="compose" target="stg-box" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-compose-prd" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#b85450;" parent="1" source="compose" target="prd-box" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="edge-dev-ab" value="HTTP JSON" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#4d4d4d;" parent="1" source="dev-a" target="dev-b" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-stg-ab" value="HTTP JSON" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#4d4d4d;" parent="1" source="stg-a" target="stg-b" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-prd-ab" value="HTTP JSON" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#4d4d4d;" parent="1" source="prd-a" target="prd-b" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="edge-dev-aj" value="trace" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#9673a6;dashed=1;" parent="1" source="dev-a" target="dev-j" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-dev-bj" value="trace" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#9673a6;dashed=1;" parent="1" source="dev-b" target="dev-j" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-stg-aj" value="trace" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#9673a6;dashed=1;" parent="1" source="stg-a" target="stg-j" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-stg-bj" value="trace" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#9673a6;dashed=1;" parent="1" source="stg-b" target="stg-j" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-prd-aj" value="trace" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#9673a6;dashed=1;" parent="1" source="prd-a" target="prd-j" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-prd-bj" value="trace" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#9673a6;dashed=1;" parent="1" source="prd-b" target="prd-j" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="legend" value="&lt;b&gt;Legend&lt;/b&gt;&lt;br&gt;Solid line = build/deploy or HTTP/JSON request&lt;br&gt;Dashed line = distributed tracing to Jaeger&lt;br&gt;Each environment has isolated network, ports and Jaeger UI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="650" width="580" height="80" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

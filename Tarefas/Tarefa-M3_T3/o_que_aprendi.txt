@@ -1,7 +1,0 @@
-Durante a realização desta tarefa, foi possível compreender melhor o funcionamento do Terraform e a forma como ele gere o estado dos recursos.
-
-No passo 5, após editar manualmente o ficheiro "changeme_file.txt", verificou-se que o Terraform identificou uma diferença entre o estado real do sistema e o estado guardado no ficheiro de estado (terraform.tfstate). Ao executar o comando "terraform plan", essa diferença foi detetada (drift), e ao executar "terraform apply", o Terraform recriou o ficheiro com o conteúdo definido na configuração, removendo as alterações manuais realizadas fora do controlo do Terraform.
-
-Após as alterações realizadas no passo 9, onde foi utilizado o recurso "null_resource" sem triggers, o comportamento mudou. O ficheiro "changeme_file.txt" passou a ser criado apenas na primeira execução do "terraform apply", não sendo recriado em execuções seguintes, desde que não existam alterações na configuração.
-
-Ao repetir os passos de 1 a 8, verificou-se que o Terraform deixou de controlar diretamente o conteúdo do ficheiro, passando apenas a executar comandos no sistema operativo. Assim, alterações manuais no ficheiro já não são detetadas como alterações no estado. Além disso, ao executar "terraform destroy", o ficheiro é automaticamente apagado devido ao uso do provisioner com "when = destroy", garantindo a correta desativação dos recursos.
