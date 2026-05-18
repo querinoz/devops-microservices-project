@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" agent="ChatGPT">
+  <diagram id="devops-architecture" name="DevOps Workflow">
+    <mxGraphModel dx="1873" dy="1044" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="dev" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=16;" value="Developer&#xa;Git Push / Commit" vertex="1">
+          <mxGeometry height="90" width="220" x="60" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="github" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="GitHub Repository&#xa;Source Code + README + CI Config" vertex="1">
+          <mxGeometry height="120" width="280" x="360" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="circleci" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=15;" value="CircleCI Pipeline&#xa;• Build&#xa;• Lint&#xa;• Pytest&#xa;• Docker Build&#xa;• Multi-Env Deploy" vertex="1">
+          <mxGeometry height="220" width="320" x="760" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="services" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;" value="Python Flask Microservices&#xa;service-a ⇄ service-b&#xa;HTTP / JSON Communication" vertex="1">
+          <mxGeometry height="120" width="320" x="1180" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="devstack" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="DEV Environment&#xa;Ports: 8001 / 8002&#xa;Jaeger :16686" vertex="1">
+          <mxGeometry height="110" width="280" x="1180" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="stgstack" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=15;" value="STG Environment&#xa;Ports: 9001 / 9002&#xa;Jaeger :16687" vertex="1">
+          <mxGeometry height="110" width="280" x="1180" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="prdstack" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;" value="PRD Environment&#xa;Ports: 10001 / 10002&#xa;Jaeger :16688" vertex="1">
+          <mxGeometry height="110" width="280" x="1180" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="docker" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=15;" value="Docker Compose&#xa;Container Orchestration&#xa;DEV / STG / PRD" vertex="1">
+          <mxGeometry height="130" width="260" x="1560" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="monitoring" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=15;" value="Observability&#xa;Distributed Tracing&#xa;Jaeger Monitoring" vertex="1">
+          <mxGeometry height="120" width="260" x="1560" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="dev" style="endArrow=block;strokeWidth=2;" target="github">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="github" style="endArrow=block;strokeWidth=2;" target="circleci">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="circleci" style="endArrow=block;strokeWidth=2;" target="services">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="circleci" style="endArrow=block;strokeWidth=2;" target="devstack">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="circleci" style="endArrow=block;strokeWidth=2;" target="stgstack">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="circleci" style="endArrow=block;strokeWidth=2;" target="prdstack">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="devstack" style="endArrow=block;strokeWidth=2;" target="docker">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="stgstack" style="endArrow=block;strokeWidth=2;" target="docker">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="prdstack" style="endArrow=block;strokeWidth=2;" target="docker">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="docker" style="endArrow=block;strokeWidth=2;" target="monitoring">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
