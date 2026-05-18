@@ -1,6 +1,8 @@
 # Projeto Final DevOps — Microsserviços Python e Entrega Contínua
 
-![Diagrama de arquitetura do projeto final DevOps](.\docs\20260518-HLD-ProjetoFinal-DevOps.drawio.png)
+# Projeto Final DevOps — Microsserviços Python e Entrega Contínua
+
+![Diagrama de arquitetura do projeto final DevOps](docs/20260518-HLD-ProjetoFinal-DevOps.drawio.png)
 
 Projeto com dois microsserviços Flask (`service-a` e `service-b`), três ambientes (`DEV`, `STG`, `PRD`) com Docker Compose, pipeline no CircleCI e tracing distribuído com Jaeger.
 
@@ -27,8 +29,8 @@ devops-microservices-project/
 ├── Makefile
 ├── requirements.txt
 ├── docs/
-│   ├── 20260513-HLD-ProjetoFinal-DevOps.drawio
-│   └── 20260513-HLD-ProjetoFinal-DevOps.drawio.png
+│   ├── 20260518-HLD-ProjetoFinal-DevOps.drawio
+│   └── 20260518-HLD-ProjetoFinal-DevOps.drawio.png
 └── microservices/
     ├── service-a/
     │   ├── app.py
